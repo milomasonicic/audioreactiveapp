@@ -2,6 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import Canvas2 from '@/Components/audioreactive/canvas2';
 import LoadSound from '@/Components/audioreactive/loadaudio';
+import Newtry from '@/Components/audioreactive/newtry'
 
 
 export default function Dashboard({ auth }) {
@@ -16,8 +17,8 @@ export default function Dashboard({ auth }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     
                    <h1>hi</h1>
-                    <Canvas2></Canvas2>
-                    <LoadSound></LoadSound>
+                  
+                    <Newtry></Newtry>
 
                 </div>
             </div>
