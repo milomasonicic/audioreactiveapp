@@ -1,5 +1,5 @@
 import { ReactP5Wrapper } from '@p5-wrapper/react';
-import sketch from './sketch';
+import sketch from './canvas3';
 
 
 export default function Canvas(params) {
