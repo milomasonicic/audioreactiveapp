@@ -30,7 +30,7 @@ export default function Newtry() {
     const songData = new Uint8Array(140);
     analyzer.current.getByteFrequencyData(songData);
     console.log(songData)
-    const bar_width = 23;
+    const bar_width = 3;
     let start = 0;
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -47,21 +47,8 @@ export default function Newtry() {
       gradient.addColorStop(0.2, "#2392f5");
       gradient.addColorStop(0.5, "#fe0095");
       gradient.addColorStop(1.0, "purple");
-
-      ctx.font = "22px Arial"; // Postavlja font i veličinu teksta
-      ctx.fillStyle = "red"; // Postavlja boju teksta
-
-      //krug
-      
-  
-      // Pisanje teksta na canvas
-      ctx.fillText(songData[i], start, canvasRef.current.height - songData[i]);   
-
-
-     // ctx.fillStyle = gradient;
-      //ctx.fillRect(start, canvasRef.current.height, bar_width, -songData[i]);
-     // ctx.strokeRect(start, canvasRef.current.height, bar_width, -songData[i]);
-      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(start, canvasRef.current.height, bar_width, -songData[i]);
     }
   };
 
@@ -80,7 +67,7 @@ export default function Newtry() {
           controls
         />
       )}
-      <canvas ref={canvasRef} width={1000} height={400} />
+      <canvas ref={canvasRef} width={500} height={200} />
     </div>
   );
 }

@@ -5,6 +5,10 @@ import LoadSound from '@/Components/audioreactive/loadaudio';
 import Newtry from '@/Components/audioreactive/newtry'
 
 
+/*
+ <Newtry></Newtry>
+*/ 
+
 export default function Dashboard({ auth }) {
     return (
         <AuthenticatedLayout
@@ -17,8 +21,9 @@ export default function Dashboard({ auth }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     
                    <h1>hi</h1>
+
+                   <Newtry></Newtry>
                   
-                    <Newtry></Newtry>
 
                 </div>
             </div>

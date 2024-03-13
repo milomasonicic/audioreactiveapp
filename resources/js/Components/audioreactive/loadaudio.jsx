@@ -1,59 +1,66 @@
-import React, {useRef, useState } from 'react';
+import { useRef, useState } from "react";
+import * as React from "react";
+import { ReactP5Wrapper } from "@p5-wrapper/react";
+import Canvas2  from "./canvas2";
 
 
+let animationController;
 
-export default function LoadSound(params) {
+export default function LoadSound() {
+  const [file, setFile] = useState(null);
+  const canvasRef = useRef();
+  const audioRef = useRef();
+  const source = useRef();
+  const analyzer = useRef();
 
-    
-    const [selectedFile, setSelectedFile] = useState(null)
-    const [anlys, setAnlys] = useState(null)
-
-    /**/ 
-    
-    const audioRef = useRef();
-    const analyzer = useRef();
-    const source = useRef();
-
-    
-
-    console.log("ja sam state", selectedFile)
-
-    if(selectedFile !== null) {
-        audio.src = URL.createObjectURL(selectedFile);
-        let audioContext = new AudioContext();
-
-
-
-
-       // var src = audioContext.createMediaElementSource(audio);
-        var analyser = audioContext.createAnalyser();
-
-       // console.log(analyzer.current);
-        //analyzer.current.connect(audioContext.destination);
-
-
-        //sr.connect(analyser);
-        //analyser.connect(audioContext.destination);
-        
-        console.log(audioContext.sampleRate);
-
-        console.log("great", audioContext, analyser, analyzer.current, audioContext.destinationnt)
-        
+  const handleAudioPlay = () => {
+    let audioContext = new AudioContext();
+    if (!source.current) {
+      source.current = audioContext.createMediaElementSource(audioRef.current);
+      analyzer.current = audioContext.createAnalyser();
+      source.current.connect(analyzer.current);
+      analyzer.current.connect(audioContext.destination);
+      console.log(analyzer.current, source.current, analyzer.current )
     }
+    visualizeData();
+  };
+  
+  const visualizeData = () => {
+      const songData = new Uint8Array(140);
+      analyzer.current.getByteFrequencyData(songData);
+      console.log(songData)
 
+      function sketch(p5) {
+ 
+        p5.setup = () => p5.createCanvas(400, 400);
+      
+        p5.draw = () => {
+          p5.background(220);
+          p5.ellipse(50, 50, 80, 80);
+        };
+      }
+      
+      return <ReactP5Wrapper sketch={sketch} />;
+  };
 
-    const handleFile = (e) => {
+  return (
+    <div className="App">
+        aaa
+      <input
+        type="file"
+        onChange={({ target: { files } }) => files[0] && setFile(files[0])}
+      />
+      {file && (
+        <audio
+          ref={audioRef}
+          onPlay={handleAudioPlay}
+          src={window.URL.createObjectURL(file)}
+          controls
+        />
+      )}
+      <canvas ref={canvasRef} width={500} height={200} />
 
-        const file = event.target.files[0]; // Dobijamo referencu na prvu odabrnu datoteku
-         // Možete prikazati u konzoli informacije o datoteci
-        setSelectedFile(file)
-       
-    }
-    
-    return (
-        <div>Hi
-             <input type="file" id="thefile" accept="audio/*" onChange={handleFile} />
-            <audio id="audio" controls></audio>
-        </div>
-    )
+      <Canvas2></Canvas2>
+    </div>
+  );
 }
