@@ -2,12 +2,19 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import Canvas2 from '@/Components/audioreactive/canvas2';
 import LoadSound from '@/Components/audioreactive/loadaudio';
-import Newtry from '@/Components/audioreactive/newtry'
+import Newtry from '@/Components/audioreactive/newtry copy'
 import Num from '@/Components/audioreactive/num2'
+import Smile from '@/Components/audioreactive/audioCanvas'
+
 
 
 /*
  <Newtry></Newtry>
+
+ovaj num je audio reactive component sa brojevim
+ <Num></Num>
+  <Num></Num>
+                  <Smile></Smile>
 */ 
 
 export default function Dashboard({ auth }) {
@@ -22,9 +29,9 @@ export default function Dashboard({ auth }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     
                    <h1>hi</h1>
-
-                  
-                  <Num></Num>
+                  <Newtry></Newtry>
+                 
+                 
 
                 </div>
             </div>
