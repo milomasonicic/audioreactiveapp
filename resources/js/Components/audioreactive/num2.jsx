@@ -37,14 +37,22 @@ export default function Num() {
 
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     for (let i = 0; i < songData.length; i++) {
-      
-      start = i * 20;
-      ctx.font = "22px + Arial" 
-      ctx.fillStyle = "blue";
-      ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]);  
-      ctx.fillStyle = "black";
-      ctx.fillText(songData[i], canvasRef.current.height - start , songData[i]);  
 
+      start = i * 50;
+      ctx.font = "14px Arial" 
+      ctx.fillStyle = "blue";
+      ctx.fillText(songData[i], canvasRef.current.height - start, songData[i]/1.1);  
+      ctx.fillText(songData[i], canvasRef.current.height - start, songData[i]/3.1);  
+      ctx.fillText(songData[i], canvasRef.current.height - start, songData[i]/7.1);  
+      ctx.fillStyle = "black";
+      ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]/1.1);  
+      ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]/3.1);  
+      ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]/7.1);  
+
+
+      ctx.font = "42px Arial" 
+      ctx.fillStyle = "red";
+      ctx.fillText("Milo", 22 , canvasRef.current.height + songData ); 
     }
   };
 
