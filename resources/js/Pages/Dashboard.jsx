@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/react';
 import Canvas2 from '@/Components/audioreactive/canvas2';
 import LoadSound from '@/Components/audioreactive/loadaudio';
 import Newtry from '@/Components/audioreactive/newtry'
+import Num from '@/Components/audioreactive/num2'
 
 
 /*
@@ -22,8 +23,8 @@ export default function Dashboard({ auth }) {
                     
                    <h1>hi</h1>
 
-                   <Newtry></Newtry>
                   
+                  <Num></Num>
 
                 </div>
             </div>
