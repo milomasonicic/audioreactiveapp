@@ -5,6 +5,8 @@ import LoadSound from '@/Components/audioreactive/loadaudio';
 import Newtry from '@/Components/audioreactive/newtry copy'
 import Num from '@/Components/audioreactive/num2'
 import Smile from '@/Components/audioreactive/audioCanvas'
+import Last from '@/Components/audioreactive/lastaudio'
+import Pokusaj from '@/Components/audioreactive/audioAnalizer'
 
 
 
@@ -14,7 +16,9 @@ import Smile from '@/Components/audioreactive/audioCanvas'
 ovaj num je audio reactive component sa brojevim
  <Num></Num>
   <Num></Num>
+   <Newtry></Newtry>
                   <Smile></Smile>
+                  <Last></Last>
 */ 
 
 export default function Dashboard({ auth }) {
@@ -29,7 +33,9 @@ export default function Dashboard({ auth }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     
                    <h1>hi</h1>
-                  <Newtry></Newtry>
+                   <Pokusaj></Pokusaj>
+                 
+                  
                  
                  
 
