@@ -33,6 +33,19 @@ Route::get('/about', function () {
     return Inertia::render('Aboutus');
 })->middleware(['auth', 'verified'])->name('about');
 
+Route::get('/colorfulbars', function () {
+    return Inertia::render('ColorfulBars');
+})->middleware(['auth', 'verified'])->name('colorfulbars');
+
+Route::get('/smile', function () {
+    return Inertia::render('Smile');
+})->middleware(['auth', 'verified'])->name('smile');
+
+Route::get('/numbers', function () {
+    return Inertia::render('Numbers');
+})->middleware(['auth', 'verified'])->name('numbers');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

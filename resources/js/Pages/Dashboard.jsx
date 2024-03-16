@@ -1,5 +1,11 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+
+import Hero from '@/Components/landingpage/hero'
+import Light from '@/Components/landingpage/lightsection'
+import Dark from '@/Components/landingpage/darksection'
+import Newsletter from '@/Components/landingpage/newsletter'
+
 import Canvas2 from '@/Components/audioreactive/canvas2';
 import LoadSound from '@/Components/audioreactive/loadaudio';
 import Newtry from '@/Components/audioreactive/newtry copy'
@@ -19,6 +25,7 @@ ovaj num je audio reactive component sa brojevim
    <Newtry></Newtry>
                   <Smile></Smile>
                   <Last></Last>
+                   <Pokusaj></Pokusaj>
 */ 
 
 export default function Dashboard({ auth }) {
@@ -33,12 +40,12 @@ export default function Dashboard({ auth }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     
                    <h1>hi</h1>
-                   <Pokusaj></Pokusaj>
-                 
+                   <Hero></Hero>
+                   <Light></Light>
+                   <Dark></Dark>
+                   <Newsletter></Newsletter>
                   
                  
-                 
-
                 </div>
             </div>
         </AuthenticatedLayout>

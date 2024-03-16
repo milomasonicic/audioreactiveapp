@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 
 let animationController;
 
-export default function Newtry() {
+export default function Bars() {
   const [file, setFile] = useState(null);
   const canvasRef = useRef();
   const audioRef = useRef();
@@ -37,7 +37,7 @@ export default function Newtry() {
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     for (let i = 0; i < songData.length; i++) {
       // compute x coordinate where we would draw
-      start = i * 4;
+      start = i * 8;
       //create a gradient for the  whole canvas
       let gradient = ctx.createLinearGradient(
         0,
@@ -45,30 +45,21 @@ export default function Newtry() {
         canvasRef.current.width,
         canvasRef.current.height
       );
-      gradient.addColorStop(0.2, "#2392f5");
-      gradient.addColorStop(0.5, "#fe0095");
-      gradient.addColorStop(1.0, "purple");
+      gradient.addColorStop(0.2, "green");
+      gradient.addColorStop(0.5, "blue");
+      gradient.addColorStop(0.4, "red");
 
-      ctx.font = "22px Arial"; // Postavlja font i veličinu teksta
-      ctx.fillStyle = "red"; // Postavlja boju teksta
-
-      //krug
-      
   
-      // Pisanje teksta na canvas
-      ctx.fillText(songData[i], start, canvasRef.current.height - songData[i]);   
-
-
-     // ctx.fillStyle = gradient;
-      //ctx.fillRect(start, canvasRef.current.height, bar_width, -songData[i]);
-     // ctx.strokeRect(start, canvasRef.current.height, bar_width, -songData[i]);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(start, canvasRef.current.height, bar_width, -songData[i]);
+     ctx.strokeRect(start, canvasRef.current.height, bar_width, -songData[i]);
       
     }
   };
 
   return (
     <div className="App">
-        aaa
+      <div className="border border-red-700 max-w-container mx-auto">
       <input
         type="file"
         onChange={({ target: { files } }) => files[0] && setFile(files[0])}
@@ -81,7 +72,10 @@ export default function Newtry() {
           controls
         />
       )}
-      <canvas ref={canvasRef} width={1000} height={400} />
+      <canvas ref={canvasRef} width={700} height={300}  className="mx-auto border border-red-700"/>
+
+      </div>
+        
     </div>
   );
 }
