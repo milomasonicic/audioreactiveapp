@@ -1,6 +1,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
+import { Button } from '@mui/base';
+
+
 import Hero from '@/Components/landingpage/hero'
 import Light from '@/Components/landingpage/lightsection'
 import Dark from '@/Components/landingpage/darksection'
@@ -36,6 +39,8 @@ export default function Dashboard({ auth }) {
         >
             <Head title="Dashboard" />
 
+            
+
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     
@@ -47,7 +52,11 @@ export default function Dashboard({ auth }) {
                   
                  
                 </div>
+               
+
             </div>
+
+            
         </AuthenticatedLayout>
     );
 }

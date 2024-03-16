@@ -21,9 +21,11 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@mui/base": "^5.0.0-beta.39",
         "@p5-wrapper/react": "^4.3.4",
         "audiomotion-analyzer": "^4.4.0",
         "p5": "^1.9.0",
+        "rc-slider": "^10.5.0",
         "react-p5-wrapper": "^4.1.2"
     }
 }
