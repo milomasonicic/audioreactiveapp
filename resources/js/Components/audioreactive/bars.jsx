@@ -12,13 +12,17 @@ export default function Bars() {
   const audioRef = useRef();
   const source = useRef();
   const analyzer = useRef();
-  const [sliderValue, setSliderValue] = useState(23)
+  const sliderValueRef = useRef(23)
+  //const sliderValue = useState(23)
+  
 
   //slider
 
   const OnChangeEventTriggerd = (newValue) => {
+    
     console.log("new Value", newValue);
-    setSliderValue(newValue);
+    sliderValueRef.current = newValue;
+    console.log(sliderValueRef.current)
   };
 
   //slider
@@ -43,7 +47,9 @@ export default function Bars() {
     const songData = new Uint8Array(140);
     analyzer.current.getByteFrequencyData(songData);
    
-    const bar_width = sliderValue;
+    console.log(sliderValueRef.current, "iz vizaluze fukcije")
+    
+    const bar_width = sliderValueRef.current;
     let start = 0;
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -72,7 +78,7 @@ export default function Bars() {
   return (
     <div className="App">
       <div className="border border-red-700 max-w-container mx-auto flex flex-col">
-      <div className="border border-black order-last flex">
+      <div className="border border-black order-last flex w-[1390px]">
       <input
         type="file"
         onChange={({ target: { files } }) => files[0] && setFile(files[0])}
@@ -87,8 +93,10 @@ export default function Bars() {
       )}
 
     <div className="w-[250px]">
+    <p>Trenutna vrijednost ref: {sliderValueRef.current}</p>
+   
       <Slider
-      defaultValue={sliderValue}
+      defaultValue={sliderValueRef.current}
       min={3}
       max={300}
       onChange={OnChangeEventTriggerd}
