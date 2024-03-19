@@ -71,10 +71,10 @@ export default function Bars() {
       
   
     ctx.fillStyle = "black";
-    ctx.fillRect(start, canvasRef.current.height - 20, bar_width, (-songData[i] + 50) * 1.5 );
+    ctx.fillRect(start, canvasRef.current.height - 80, bar_width, 30 + (-songData[i] - 150) * 0.9);
     
     ctx.fillStyle = "red";
-    ctx.fillRect(start, canvasRef.current.height -60, bar_width, 200 + (-songData[i] - 150) * 0.5 );
+    ctx.fillRect(start, canvasRef.current.height -80, bar_width, 200 + (-songData[i] - 150) * 0.5 );
     
     ctx.fillRect(start, canvasRef.current.height, bar_width, -songData[i] );
     
@@ -105,7 +105,7 @@ export default function Bars() {
       <Slider
       defaultValue={sliderValueRef.current}
       min={3}
-      max={300}
+      max={48}
       onChange={OnChangeEventTriggerd}
        
          />
