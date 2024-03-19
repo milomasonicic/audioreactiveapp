@@ -3,17 +3,26 @@ import { useRef, useState } from "react";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
+import EditingSlider from '../sliders/slider'
+
 
 let animationController;
 
 export default function Bars() {
   const [file, setFile] = useState(null);
+  const [msg, setMsg] = useState("Poruka za promeni");
   const canvasRef = useRef();
   const audioRef = useRef();
   const source = useRef();
   const analyzer = useRef();
   const sliderValueRef = useRef(23)
   //const sliderValue = useState(23)
+
+  //poruka za promenu
+
+  function promena(msg) {
+    setMsg(msg)
+  }
   
 
   //slider
@@ -106,7 +115,7 @@ export default function Bars() {
       defaultValue={sliderValueRef.current}
       min={3}
       max={48}
-      onChange={OnChangeEventTriggerd}
+      //onChange={OnChangeEventTriggerd}
        
          />
      </div>
@@ -114,7 +123,11 @@ export default function Bars() {
       </div>  
       
       <canvas ref={canvasRef} width={700} height={420}  className="mx-auto border border-red-700"/>
+
       </div>       
+      <EditingSlider title={"milo title"} min={1} max={48} promena={promena}  OnChangeEventTriggerd={OnChangeEventTriggerd}  ></EditingSlider>
+    
+        <h1>{msg}</h1>
     </div>
   );
 }
