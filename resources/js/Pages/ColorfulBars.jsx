@@ -7,11 +7,11 @@ import Pokusaj from '@/Components/audioreactive/audioAnalizer';
 
 export default function colorfulbars() {
     return (
-       <div>
+       <div className='max-w-container mx-auto border border-red-700'>
         <h1>Colorful bars</h1>
-        <div className='w-[500px]'>
+        
            <Bars></Bars>
-        </div>
+        
        </div>
     );
 }

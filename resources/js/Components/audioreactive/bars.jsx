@@ -109,9 +109,9 @@ export default function Bars() {
   };
 
   return (
-    <div className="App">
-      <div className="w-[1440px] bg-red-700 flex flex-col">
-      <div className="border border-black w-2/3 order-last mx-auto flex justify-between">
+    <div className="App flex">
+      <div className="w-[800px] bg-red-700 flex flex-col">
+      <div className="border border-black w-full order-last mx-auto flex-col h-[100px]">
       <input
         type="file"
         onChange={({ target: { files } }) => files[0] && setFile(files[0])}
@@ -128,15 +128,17 @@ export default function Bars() {
       </div>       
    
 
-      <canvas ref={canvasRef} width={900} height={420}  className="bg-white mx-auto border border-red-700"/>
+      <canvas ref={canvasRef} width={790} height={420}  className="bg-white mx-auto border border-red-700"/>
       </div>  
 
-      <div className="flex w-[1440px] justify-between border border-red-700">
+      
+<div>
 
-      <EditingSlider title={"milo title"} min={1} max={48} promena={promena}  OnChangeEventTriggerd={OnChangeEventTriggerd}  ></EditingSlider>
       <ColorPicker changeColor={changeColor}  changeSecondColor={changeSecondColor} ></ColorPicker>
+      <EditingSlider title={"milo title"} min={1} max={48} promena={promena}  OnChangeEventTriggerd={OnChangeEventTriggerd}  ></EditingSlider>
        
-      </div>
+</div>
+     
       
 
     </div>
