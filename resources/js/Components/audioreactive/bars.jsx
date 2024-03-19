@@ -41,21 +41,23 @@ export default function Bars() {
   
   const visualizeData = () => {
     animationController = window.requestAnimationFrame(visualizeData);
-    if (audioRef.current.paused) {
-      return cancelAnimationFrame(animationController);
-    }
+    /*if (audioRef.current.paused) {
+      cancelAnimationFrame(animationController);
+
+    }*/
     const songData = new Uint8Array(140);
     analyzer.current.getByteFrequencyData(songData);
    
     console.log(sliderValueRef.current, "iz vizaluze fukcije")
     
     const bar_width = sliderValueRef.current;
-    let start = 0;
+    let start = 0
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     for (let i = 0; i < songData.length; i++) {
       // compute x coordinate where we would draw
-      start = i * 8;
+      //start = i * 8;
+      start = i * 50 ;
       //create a gradient for the  whole canvas
       let gradient = ctx.createLinearGradient(
         0,
@@ -66,11 +68,16 @@ export default function Bars() {
       gradient.addColorStop(0.2, "green");
       gradient.addColorStop(0.5, "blue");
       gradient.addColorStop(0.4, "red");
-
+      
   
-    ctx.fillStyle = gradient;
-    ctx.fillRect(start, canvasRef.current.height, bar_width, -songData[i]);
-     ctx.strokeRect(start, canvasRef.current.height, bar_width, -songData[i]);
+    ctx.fillStyle = "black";
+    ctx.fillRect(start, canvasRef.current.height - 20, bar_width, (-songData[i] + 50) * 1.5 );
+    
+    ctx.fillStyle = "red";
+    ctx.fillRect(start, canvasRef.current.height -60, bar_width, 200 + (-songData[i] - 150) * 0.5 );
+    
+    ctx.fillRect(start, canvasRef.current.height, bar_width, -songData[i] );
+    
       
     }
   };
@@ -107,12 +114,7 @@ export default function Bars() {
       </div>  
       
       <canvas ref={canvasRef} width={700} height={420}  className="mx-auto border border-red-700"/>
-      </div>
-
-
-    
-    
-        
+      </div>       
     </div>
   );
 }
