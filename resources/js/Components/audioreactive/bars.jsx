@@ -4,6 +4,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 import EditingSlider from '../sliders/slider'
+import ColorPicker from '../sliders/colorpicker'
 
 
 let animationController;
@@ -18,10 +19,27 @@ export default function Bars() {
   const sliderValueRef = useRef(23)
   //const sliderValue = useState(23)
 
+  //BAR COLOR
+  const coloroneRef = useRef("#007af4")
+  const colortwoRef = useRef("#00bb07")
+ 
+
   //poruka za promenu
 
   function promena(msg) {
     setMsg(msg)
+  }
+
+  //change of color
+
+  function changeColor(color) {
+    coloroneRef.current = color;
+    console.log(sliderValueRef.current)
+  }
+  
+  function changeSecondColor(color) {
+    colortwoRef.current = color;
+    
   }
   
 
@@ -56,8 +74,7 @@ export default function Bars() {
     }*/
     const songData = new Uint8Array(140);
     analyzer.current.getByteFrequencyData(songData);
-   
-    console.log(sliderValueRef.current, "iz vizaluze fukcije")
+  
     
     const bar_width = sliderValueRef.current;
     let start = 0
@@ -79,10 +96,10 @@ export default function Bars() {
       gradient.addColorStop(0.4, "red");
       
   
-    ctx.fillStyle = "black";
+    ctx.fillStyle = coloroneRef.current;
     ctx.fillRect(start, canvasRef.current.height - 80, bar_width, 30 + (-songData[i] - 150) * 0.9);
     
-    ctx.fillStyle = "red";
+    ctx.fillStyle = colortwoRef.current;
     ctx.fillRect(start, canvasRef.current.height -80, bar_width, 200 + (-songData[i] - 150) * 0.5 );
     
     ctx.fillRect(start, canvasRef.current.height, bar_width, -songData[i] );
@@ -109,15 +126,8 @@ export default function Bars() {
       )}
 
     <div className="w-[250px]">
-    <p>Trenutna vrijednost ref: {sliderValueRef.current}</p>
+  
    
-      <Slider
-      defaultValue={sliderValueRef.current}
-      min={3}
-      max={48}
-      //onChange={OnChangeEventTriggerd}
-       
-         />
      </div>
 
       </div>  
@@ -126,7 +136,7 @@ export default function Bars() {
 
       </div>       
       <EditingSlider title={"milo title"} min={1} max={48} promena={promena}  OnChangeEventTriggerd={OnChangeEventTriggerd}  ></EditingSlider>
-    
+        <ColorPicker changeColor={changeColor}  changeSecondColor={changeSecondColor} ></ColorPicker>
         <h1>{msg}</h1>
     </div>
   );
