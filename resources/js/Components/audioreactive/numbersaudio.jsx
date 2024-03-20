@@ -40,16 +40,12 @@ export default function Num() {
 
       start = i * 50;
       ctx.font = "14px Arial" 
-      ctx.fillStyle = "blue";
-      ctx.fillText(songData[i], canvasRef.current.height - start, songData[i]/1.1);  
-      ctx.fillText(songData[i], canvasRef.current.height - start, songData[i]/3.1);  
-      ctx.fillText(songData[i], canvasRef.current.height - start, songData[i]/7.1);  
+      ctx.fillStyle = "red";
+      ctx.fillText(songData[i], canvasRef.current.height, songData[i]);  
+ 
       ctx.fillStyle = "black";
       ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]/1.1);  
-      ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]/3.1);  
-      ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]/7.1);  
-
-
+    
       ctx.font = "42px Arial" 
       ctx.fillStyle = "red";
       ctx.fillText("Milo", 22 , canvasRef.current.height + songData ); 

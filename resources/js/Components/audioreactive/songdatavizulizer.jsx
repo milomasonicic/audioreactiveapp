@@ -5,9 +5,16 @@ import 'rc-slider/assets/index.css';
 
 import EditingSlider from '../sliders/slider'
 import NumSlider from '../sliders/numBarsslider'
-import ColorPicker from '../sliders/colorpicker'
+
+
+import Gradiantvalue from "../sliders/gradiantvalue";
+import GradiantvalueOne from  "../sliders/gradiantvalueone"
+import GradiantvalueTwo from "../sliders/gradiantvaluetwo"
+//import ColorPicker from '../sliders/colorpicker'
 import ShapeSlider from '../sliders/changeShape'
 import HeightSlider from '../sliders/heightSlider'
+
+import GradientPicker from "../sliders/colorpickergradinet";
 
 
 let animationController;
@@ -29,24 +36,29 @@ export default function Num() {
   //const sliderValue = useState(23)
 
   //BAR COLOR
-  const coloroneRef = useRef("#007af4")
-  const colortwoRef = useRef("#00bb07")
-  const colorthreeRef = useRef("#D0bb07")
+  const gradientcolorRef = useRef("#007af4")
+  const gradientcolor1Ref = useRef("#00bb07")
+  const gradientcolor2Ref = useRef("#D0bb07")
+  
+  //gradient valuer
+  const gradientvalueRef = useRef(0.1)
+  const gradientvalueoneRef = useRef(0.5)
+  const gradientvaluthwoRef = useRef(0.9)
  
 
   //change of color
 
-  function changeColor(color) {
-    coloroneRef.current = color;
+  function changeGradient(color) {
+    gradientcolorRef.current = color;
     console.log(sliderValueRef.current)
   }
   
-  function changeSecondColor(color) {
-    colortwoRef.current = color; 
+  function changeGradientOne(color) {
+    gradientcolor1Ref.current = color; 
   }
 
-  function changeThirdColor(color) {
-    colorthreeRef.current = color; 
+  function changeGradientTwo(color) {
+    gradientcolor2Ref.current = color; 
   }
 
   //slider
@@ -60,21 +72,27 @@ export default function Num() {
 
   //slider
 
-  const ChangeNumBaras = (newValue) => {
+  const gradientValue = (newValue) => {
     
     console.log("new Value", newValue);
-    nubmerOfbarsRef.current = newValue;
-    console.log(nubmerOfbarsRef.current)
+    gradientvalueRef.current = newValue;
+   
   };
 
-  function changeShape(newValue) {
-    randomnessRef.current = newValue;
+  const gradientValueOne = (newValue) => {
     
-  }
+    console.log("new Value", newValue);
+    gradientvalueoneRef.current = newValue;
+   
+  };
 
-  function heightChange(newValue) {
-    heightRef.current = newValue;   
-  }
+  const gradientValueTwo = (newValue) => {
+    
+    console.log("new Value", newValue);
+    gradientvaluthwoRef.current = newValue;
+   
+  };
+
 
   //slider
 
@@ -98,25 +116,26 @@ export default function Num() {
   
     const bar_width = sliderValueRef.current;
     const nubmerOfbars = nubmerOfbarsRef.current 
-    let start = 0
+    let start = canvasRef.current.width
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     for (let i = 0; i < songData.length; i++) {
-      start = i * 50;
-      ctx.font = "14px Arial" 
-      ctx.fillStyle = "blue";
-      ctx.fillText(songData[i], canvasRef.current.height - start, songData[i]/1.1);  
-      ctx.fillText(songData[i], canvasRef.current.height - start, songData[i]/3.1);  
-      ctx.fillText(songData[i], canvasRef.current.height - start, songData[i]/7.1);  
-      ctx.fillStyle = "black";
-      ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]/1.1);  
-      ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]/3.1);  
-      ctx.fillText(songData[i], canvasRef.current.height + start, songData[i]/7.1);  
+      start = i * 20;
+
+      let gradient = ctx.createLinearGradient(
+        0,
+        0,
+        canvasRef.current.width,
+        canvasRef.current.height
+      );
+      gradient.addColorStop(gradientvalueRef.current, gradientcolorRef.current);
+      gradient.addColorStop(gradientvalueoneRef.current, gradientcolor1Ref.current);
+      gradient.addColorStop(gradientvaluthwoRef.current, gradientcolor2Ref.current);
 
 
-      ctx.font = "42px Arial" 
-      ctx.fillStyle = "red";
-      ctx.fillText("Milo", 22 , canvasRef.current.height + songData ); 
+      ctx.font = "44px Arial" 
+      ctx.fillStyle = gradient;
+     ctx.fillText("Lorem ipsum dolor sit amet", -300 + canvasRef.current.height,  250 + songData[i] * 0.1 );  
     }
   };
 
@@ -146,12 +165,13 @@ export default function Num() {
       
 <div>
 
-      <ColorPicker changeColor={changeColor}  changeSecondColor={changeSecondColor} changeThirdColor={changeThirdColor} ></ColorPicker>
+      <GradientPicker changeGradient={changeGradient} changeGradientOne={changeGradientOne} changeGradientTwo={changeGradientTwo} ></GradientPicker>
       <div>
-        <EditingSlider title={"Bar Width"} min={1} max={250} OnChangeEventTriggerd={OnChangeEventTriggerd}></EditingSlider>
-        <NumSlider title={"Number of bars"} min={0.3} max={10} ChangeNumBaras={ChangeNumBaras}></NumSlider>
-        <ShapeSlider title={"Height of bars"} min={-100} max={400} changeShape={changeShape}></ShapeSlider>
-        <HeightSlider title={"Height of bars 2"} min={-100} max={400} heightChange={heightChange}></HeightSlider>
+        <Gradiantvalue title={"Gradient value"} min={0.1} max={0.9} gradientValue={gradientValue} ></Gradiantvalue>
+        <GradiantvalueOne title={"Gradient value TWO"} min={0.1} max={0.9} gradientValueOne={gradientValueOne} ></GradiantvalueOne>
+        <GradiantvalueTwo title={"Gradient value 3"} min={0.1} max={0.9} gradientValueTwo={gradientValueTwo} ></GradiantvalueTwo>
+       
+       
       </div>
        
 </div>

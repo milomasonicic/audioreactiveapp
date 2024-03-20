@@ -14,7 +14,7 @@ let animationController;
 
 export default function Bars() {
   const [file, setFile] = useState(null);
-  const [msg, setMsg] = useState("Poruka za promeni");
+  const [msg, setMsg] = useState("Poruka za promjeniti");
   const canvasRef = useRef();
   const audioRef = useRef();
   const source = useRef();
@@ -29,9 +29,9 @@ export default function Bars() {
   //const sliderValue = useState(23)
 
   //BAR COLOR
-  const coloroneRef = useRef("#007af4")
-  const colortwoRef = useRef("#00bb07")
-  const colorthreeRef = useRef("#D0bb07")
+  const coloroneRef = useRef("#a9ccaa")
+  const colortwoRef = useRef("#a9c2cc")
+  const colorthreeRef = useRef("#070c01")
  
 
   //change of color
