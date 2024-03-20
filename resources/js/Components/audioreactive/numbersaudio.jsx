@@ -57,9 +57,11 @@ export default function Num() {
   };
 
   return (
-    <div className="App">
-        aaa
-      <input
+    <div className="App flex">
+        <div className="w-[800px] bg-red-700 flex flex-col">
+
+    <div className="border border-black w-full order-last mx-auto flex-col h-[100px]">
+        <input
         type="file"
         onChange={({ target: { files } }) => files[0] && setFile(files[0])}
       />
@@ -72,6 +74,19 @@ export default function Num() {
         />
       )}
       <canvas ref={canvasRef} width={1000} height={400} />
+
+    </div>
+
+      </div>
+
+        <div>
+    <p>controls</p> 
+    <p>controls</p> 
+    <p>controls</p> 
+    <p>controls</p> 
+
+        </div>
+    
     </div>
   );
 }

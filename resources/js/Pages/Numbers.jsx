@@ -1,11 +1,14 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import Canvas from '@/Components/audioreactive/canvas';
+import Num from   '@/Components/audioreactive/songdatavizulizer'
+
 
 export default function Numbers() {
     return (
        <div>
-        <h1>Numbers</h1>
+       <Num></Num>
+      
        </div>
     );
 }
