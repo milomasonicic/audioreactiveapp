@@ -4,7 +4,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 
-export default function EditingSlider ({title, min , max , OnChangeEventTriggerd}) {
+export default function NumSlider ({title, min , max , ChangeNumBaras }) {
 
     const value = useState(14)
 
@@ -16,7 +16,7 @@ export default function EditingSlider ({title, min , max , OnChangeEventTriggerd
             defaultValue={value}
             min={min}
             max={max}
-            onChange={OnChangeEventTriggerd}
+            onChange={ChangeNumBaras}
             key="slider"
        
          />
