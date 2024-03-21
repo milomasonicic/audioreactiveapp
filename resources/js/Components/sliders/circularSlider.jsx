@@ -1,12 +1,16 @@
 import React from 'react';
+import { useState } from 'react';
 import CircularSlider from '@fseehawer/react-circular-slider';
 
-const RotationSlider = () => {
+const RotationSlider = ({changeAngle}) => {
+
+    const [value, changeValue] = useState(20);
+    //const slider = useRef(null);
     return (
         <div   >
 
             <CircularSlider  
-                onChange={ value => { console.log(value); } }
+                onChange={changeValue(value)}
             
             labelColor="#005a58"
             knobColor="#005a58"

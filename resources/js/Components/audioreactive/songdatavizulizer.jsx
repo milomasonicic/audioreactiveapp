@@ -36,7 +36,7 @@ export default function Num() {
   const heightRef = useRef(80)
 
   //rotation value
-  const rotationRef = useRef(1)
+  const rotationRef = useRef(180)
 
   //start
   const startRef = useRef(0)
@@ -67,6 +67,12 @@ export default function Num() {
 
   function changeGradientTwo(color) {
     gradientcolor2Ref.current = color; 
+  }
+
+  //rotaton change
+  function changeAngle(newValue) {
+    rotationRef.current = newValue;
+   console.log(rotationRef.current, "angle")
   }
 
   //slider
@@ -163,7 +169,8 @@ export default function Num() {
     //text    
     ctx.save()
     ctx.translate(startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 )
-    ctx.rotate(Math.PI /180)
+    ctx.rotate(Math.PI /rotationRef.current)
+  
     ctx.fillText(songData[i], 0, 0)
 
   //ctx.fillText(songData[i],  startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 );
@@ -210,8 +217,9 @@ export default function Num() {
 
         <EditingSlider title={"Density"} min={2} max={8} OnChangeEventTriggerd={OnChangeEventTriggerd}></EditingSlider>
         <EditingSlider title={"Height"} min={10} max={400} OnChangeEventTriggerd={OnChangeHeight}></EditingSlider>
+        <EditingSlider title={"angle"} min={1} max={180} OnChangeEventTriggerd={changeAngle}></EditingSlider>
 
-      <RotationSlider></RotationSlider>
+     
          
         
        
