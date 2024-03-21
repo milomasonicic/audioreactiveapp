@@ -1,10 +1,7 @@
 import { useRef, useState } from "react";
 
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
-
 import EditingSlider from '../sliders/slider'
-import NumSlider from '../sliders/numBarsslider'
+import CircularSlider from '@fseehawer/react-circular-slider';
 
 
 import Gradiantvalue from "../sliders/gradiantvalue";
@@ -23,7 +20,6 @@ let animationController;
 
 export default function Num() {
   const [file, setFile] = useState(null);
-  const [msg, setMsg] = useState("Poruka za promeni");
   const canvasRef = useRef();
   const audioRef = useRef();
   const source = useRef();
@@ -33,10 +29,14 @@ export default function Num() {
   const sliderValueRef = useRef(23)
   const nubmerOfbarsRef = useRef(1)
   const randomnessRef = useRef(1)
+
   const heightRef = useRef(80)
 
   //rotation value
   const rotationRef = useRef(180)
+
+  //fontRef
+  const fontRef = useRef(72)
 
   //start
   const startRef = useRef(0)
@@ -70,9 +70,14 @@ export default function Num() {
   }
 
   //rotaton change
-  function changeAngle(newValue) {
-    rotationRef.current = newValue;
+  function changeAngle(value) {
+    rotationRef.current = value;
    console.log(rotationRef.current, "angle")
+  }
+
+  function changeFontSize(value) {
+    fontRef.current = value;
+   console.log( fontRef.current, "font size")
   }
 
   //slider
@@ -158,23 +163,31 @@ export default function Num() {
       gradient.addColorStop(0.4, gradientcolor2Ref.current);
      
 
-    ctx.fillStyle =  gradient;
-    //ctx.fillRect(start * nubmerOfbars, canvasRef.current.height - randomnessRef.current, bar_width, -songData[i] );
+    
+    
+    
+    //text
+    var fontSize = `${fontRef.current}px Arial`
   
-
-  //text
-  ctx.font = "24px Georgia";
-  ctx.fillStyle = gradient;
-
+   // ctx.font = fontSize;
+    var fontSize1 = fontRef.current.toString()    
+    ctx.font = fontSize1 + "px Arial"
+    ctx.fillStyle = gradient;
+    
     //text    
     ctx.save()
     ctx.translate(startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 )
-    ctx.rotate(Math.PI /rotationRef.current)
-  
+    
+    ctx.rotate(rotationRef.current)
+    
+    ctx.fill();
     ctx.fillText(songData[i], 0, 0)
 
   //ctx.fillText(songData[i],  startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 );
      ctx.restore() 
+
+     
+     
     }
   };
 
@@ -217,11 +230,28 @@ export default function Num() {
 
         <EditingSlider title={"Density"} min={2} max={8} OnChangeEventTriggerd={OnChangeEventTriggerd}></EditingSlider>
         <EditingSlider title={"Height"} min={10} max={400} OnChangeEventTriggerd={OnChangeHeight}></EditingSlider>
-        <EditingSlider title={"angle"} min={1} max={180} OnChangeEventTriggerd={changeAngle}></EditingSlider>
-
-     
-         
         
+
+        <h1>circular</h1>
+
+        <h1> Angle</h1>
+        <CircularSlider 
+
+        width={100}
+        height={100}
+        min={1}
+        max={360}
+        onChange={(value) => changeAngle(value)}></CircularSlider>
+         
+        <h1>Font</h1>
+
+        <CircularSlider 
+
+          width={100}
+          height={100}
+          min={1}
+          max={72}
+          onChange={(value) => changeFontSize(value)}></CircularSlider>
        
      
  
