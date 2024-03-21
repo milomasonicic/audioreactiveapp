@@ -91,6 +91,7 @@ export default function Bars() {
   };
   
   const visualizeData = () => {
+    const ctx = canvasRef.current.getContext("2d");
     animationController = window.requestAnimationFrame(visualizeData);
   
     const songData = new Uint8Array(140);
@@ -99,7 +100,6 @@ export default function Bars() {
     const bar_width = sliderValueRef.current;
     const nubmerOfbars = nubmerOfbarsRef.current 
     let start = 0
-    const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     for (let i = 0; i < songData.length; i++) {
       // compute x coordinate where we would draw
@@ -153,6 +153,7 @@ export default function Bars() {
         <NumSlider title={"Number of bars"} min={0.3} max={10} ChangeNumBaras={ChangeNumBaras}></NumSlider>
         <ShapeSlider title={"Height of bars"} min={-100} max={400} changeShape={changeShape}></ShapeSlider>
         <HeightSlider title={"Height of bars 2"} min={-100} max={400} heightChange={heightChange}></HeightSlider>
+     
       </div>
        
 </div>

@@ -21,6 +21,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@fseehawer/react-circular-slider": "^2.6.4",
         "@mui/base": "^5.0.0-beta.39",
         "@p5-wrapper/react": "^4.3.4",
         "audiomotion-analyzer": "^4.4.0",

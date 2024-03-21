@@ -11,6 +11,8 @@ import Gradiantvalue from "../sliders/gradiantvalue";
 import GradiantvalueOne from  "../sliders/gradiantvalueone"
 import GradiantvalueTwo from "../sliders/gradiantvaluetwo"
 //import ColorPicker from '../sliders/colorpicker'
+
+import RotationSlider from "../sliders/circularSlider"
 import ShapeSlider from '../sliders/changeShape'
 import HeightSlider from '../sliders/heightSlider'
 
@@ -32,6 +34,12 @@ export default function Num() {
   const nubmerOfbarsRef = useRef(1)
   const randomnessRef = useRef(1)
   const heightRef = useRef(80)
+
+  //rotation value
+  const rotationRef = useRef(1)
+
+  //start
+  const startRef = useRef(0)
   
   //const sliderValue = useState(23)
 
@@ -70,6 +78,13 @@ export default function Num() {
     console.log(sliderValueRef.current)
   };
 
+  const OnChangeHeight = (newValue) => {
+    
+    console.log("new Value", newValue);
+    heightRef.current = newValue;
+    //console.log(sliderValueRef.current)
+  };
+
   //slider
 
   const gradientValue = (newValue) => {
@@ -93,9 +108,6 @@ export default function Num() {
    
   };
 
-
-  //slider
-
   const handleAudioPlay = () => {
     let audioContext = new AudioContext();
     if (!source.current) {
@@ -107,8 +119,10 @@ export default function Num() {
     }
     visualizeData();
   };
-  
+
+
   const visualizeData = () => {
+    const ctx = canvasRef.current.getContext("2d");
     animationController = window.requestAnimationFrame(visualizeData);
   
     const songData = new Uint8Array(140);
@@ -116,11 +130,16 @@ export default function Num() {
   
     const bar_width = sliderValueRef.current;
     const nubmerOfbars = nubmerOfbarsRef.current 
-    let start = canvasRef.current.width
-    const ctx = canvasRef.current.getContext("2d");
+    let start = startRef.current
+    let start01 = 50
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     for (let i = 0; i < songData.length; i++) {
-      start = i * 20;
+      // compute x coordinate where we would draw
+      //start = i * 8;
+      startRef.current = i * 50 ;
+     // start01 = i * 50 
+  
+      //create a gradient for the  whole canvas
 
       let gradient = ctx.createLinearGradient(
         0,
@@ -128,20 +147,35 @@ export default function Num() {
         canvasRef.current.width,
         canvasRef.current.height
       );
-      gradient.addColorStop(gradientvalueRef.current, gradientcolorRef.current);
-      gradient.addColorStop(gradientvalueoneRef.current, gradientcolor1Ref.current);
-      gradient.addColorStop(gradientvaluthwoRef.current, gradientcolor2Ref.current);
+      gradient.addColorStop(0.2, gradientcolorRef.current);
+      gradient.addColorStop(0.5, gradientcolor1Ref.current);
+      gradient.addColorStop(0.4, gradientcolor2Ref.current);
+     
 
+    ctx.fillStyle =  gradient;
+    //ctx.fillRect(start * nubmerOfbars, canvasRef.current.height - randomnessRef.current, bar_width, -songData[i] );
+  
 
-      ctx.font = "44px Arial" 
-      ctx.fillStyle = gradient;
-     ctx.fillText("Lorem ipsum dolor sit amet", -300 + canvasRef.current.height,  250 + songData[i] * 0.1 );  
+  //text
+  ctx.font = "24px Georgia";
+  ctx.fillStyle = gradient;
+
+    //text    
+    ctx.save()
+    ctx.translate(startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 )
+    ctx.rotate(Math.PI /180)
+    ctx.fillText(songData[i], 0, 0)
+
+  //ctx.fillText(songData[i],  startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 );
+     ctx.restore() 
     }
   };
 
+  
+
   return (
     <div className="App flex">
-      <div className="w-[800px] bg-red-700 flex flex-col">
+      <div className="w-[800px] bg-red-700 flex flex-col h-[600px]">
       <div className="border border-black w-full order-last mx-auto flex-col h-[100px]">
       <input
         type="file"
@@ -162,18 +196,29 @@ export default function Num() {
       <canvas ref={canvasRef} width={790} height={420}  className="bg-white mx-auto border border-red-700"/>
       </div>  
 
-      
-<div>
+
+        
+      <div>
 
       <GradientPicker changeGradient={changeGradient} changeGradientOne={changeGradientOne} changeGradientTwo={changeGradientTwo} ></GradientPicker>
       <div>
         <Gradiantvalue title={"Gradient value"} min={0.1} max={0.9} gradientValue={gradientValue} ></Gradiantvalue>
         <GradiantvalueOne title={"Gradient value TWO"} min={0.1} max={0.9} gradientValueOne={gradientValueOne} ></GradiantvalueOne>
         <GradiantvalueTwo title={"Gradient value 3"} min={0.1} max={0.9} gradientValueTwo={gradientValueTwo} ></GradiantvalueTwo>
+      
+        <h1>bars</h1>
+
+        <EditingSlider title={"Density"} min={2} max={8} OnChangeEventTriggerd={OnChangeEventTriggerd}></EditingSlider>
+        <EditingSlider title={"Height"} min={10} max={400} OnChangeEventTriggerd={OnChangeHeight}></EditingSlider>
+
+      <RotationSlider></RotationSlider>
+         
+        
        
-       
-      </div>
-       
+     
+ 
+</div>
+ 
 </div>
      
       
