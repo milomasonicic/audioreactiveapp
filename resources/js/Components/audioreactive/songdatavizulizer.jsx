@@ -47,22 +47,18 @@ export default function Num() {
   const gradientcolorRef = useRef("#007af4")
   const gradientcolor1Ref = useRef("#00bb07")
   const gradientcolor2Ref = useRef("#D0bb07")
+
   
-  //gradient valuer
-  const gradientvalueRef = useRef(0.1)
-  const gradientvalueoneRef = useRef(0.5)
-  const gradientvaluthwoRef = useRef(0.9)
- 
 
   //change of color
 
   function changeGradient(color) {
     gradientcolorRef.current = color;
-    console.log(sliderValueRef.current)
+    
   }
   
   function changeGradientOne(color) {
-    gradientcolor1Ref.current = color; 
+    gradientcolor1Ref.current  = color; 
   }
 
   function changeGradientTwo(color) {
@@ -98,26 +94,7 @@ export default function Num() {
 
   //slider
 
-  const gradientValue = (newValue) => {
-    
-    console.log("new Value", newValue);
-    gradientvalueRef.current = newValue;
-   
-  };
-
-  const gradientValueOne = (newValue) => {
-    
-    console.log("new Value", newValue);
-    gradientvalueoneRef.current = newValue;
-   
-  };
-
-  const gradientValueTwo = (newValue) => {
-    
-    console.log("new Value", newValue);
-    gradientvaluthwoRef.current = newValue;
-   
-  };
+  
 
   const handleAudioPlay = () => {
     let audioContext = new AudioContext();
@@ -150,38 +127,23 @@ export default function Num() {
       startRef.current = i * 50 ;
      // start01 = i * 50 
   
-      //create a gradient for the  whole canvas
 
-      let gradient = ctx.createLinearGradient(
-        0,
-        0,
-        canvasRef.current.width,
-        canvasRef.current.height
-      );
-      gradient.addColorStop(0.2, gradientcolorRef.current);
-      gradient.addColorStop(0.5, gradientcolor1Ref.current);
-      gradient.addColorStop(0.4, gradientcolor2Ref.current);
-     
-
-    
-    
-    
-    //text
-    var fontSize = `${fontRef.current}px Arial`
-  
    // ctx.font = fontSize;
     var fontSize1 = fontRef.current.toString()    
     ctx.font = fontSize1 + "px Arial"
-    ctx.fillStyle = gradient;
+    ctx.fillStyle = gradientcolorRef.current
+    ctx.fillText("milo", 0, 0)
     
     //text    
     ctx.save()
     ctx.translate(startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 )
-    
     ctx.rotate(rotationRef.current)
-    
-    ctx.fill();
+    ctx.fillStyle = gradientcolorRef.current;
     ctx.fillText(songData[i], 0, 0)
+    ctx.fillStyle = gradientcolor1Ref.current;
+    ctx.fillText(songData[i], 100, 100)
+    ctx.fillStyle = gradientcolor2Ref.current;
+    ctx.fillText(songData[i], 50, 50)
 
   //ctx.fillText(songData[i],  startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 );
      ctx.restore() 
@@ -222,9 +184,7 @@ export default function Num() {
 
       <GradientPicker changeGradient={changeGradient} changeGradientOne={changeGradientOne} changeGradientTwo={changeGradientTwo} ></GradientPicker>
       <div>
-        <Gradiantvalue title={"Gradient value"} min={0.1} max={0.9} gradientValue={gradientValue} ></Gradiantvalue>
-        <GradiantvalueOne title={"Gradient value TWO"} min={0.1} max={0.9} gradientValueOne={gradientValueOne} ></GradiantvalueOne>
-        <GradiantvalueTwo title={"Gradient value 3"} min={0.1} max={0.9} gradientValueTwo={gradientValueTwo} ></GradiantvalueTwo>
+        
       
         <h1>bars</h1>
 
@@ -249,7 +209,7 @@ export default function Num() {
 
           width={100}
           height={100}
-          min={1}
+          min={14}
           max={72}
           onChange={(value) => changeFontSize(value)}></CircularSlider>
        
