@@ -10,11 +10,7 @@ export default function LightSection (){
                     Colorful Bars
                  </NavLink>
                 </li>
-                <li>
-                <NavLink href={route('smile')} active={route().current('smile')}>
-                    Smile
-                 </NavLink>
-                </li>
+                
                 <li>
                 <NavLink href={route('numbers')} active={route().current('numbers')}>
                     Numbers

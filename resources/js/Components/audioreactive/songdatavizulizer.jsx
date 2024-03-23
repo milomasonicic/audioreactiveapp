@@ -124,8 +124,10 @@ export default function Num() {
     for (let i = 0; i < songData.length; i++) {
       // compute x coordinate where we would draw
       //start = i * 8;
-      startRef.current = i * 50 ;
+      startRef.current = i * 4 ;
      // start01 = i * 50 
+
+     ///PROMIJENITI OVU 4
   
 
    // ctx.font = fontSize;
@@ -136,13 +138,14 @@ export default function Num() {
     
     //text    
     ctx.save()
-    ctx.translate(startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 )
+    ctx.translate(startRef.current * bar_width, heightRef.current + -songData[i] * 0.9 )
     ctx.rotate(rotationRef.current)
     ctx.fillStyle = gradientcolorRef.current;
     ctx.fillText(songData[i], 0, 0)
     ctx.fillStyle = gradientcolor1Ref.current;
     ctx.fillText(songData[i], 100, 100)
     ctx.fillStyle = gradientcolor2Ref.current;
+    ctx.translate(startRef.current * bar_width, heightRef.current + -songData[i] * 0.9 )
     ctx.fillText(songData[i], 50, 50)
 
   //ctx.fillText(songData[i],  startRef.current * bar_width, heightRef.current + -songData[i] * 0.2 );

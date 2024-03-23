@@ -9,27 +9,6 @@ import Light from '@/Components/landingpage/lightsection'
 import Dark from '@/Components/landingpage/darksection'
 import Newsletter from '@/Components/landingpage/newsletter'
 
-/*import Canvas2 from '@/Components/audioreactive/canvas2';
-import LoadSound from '@/Components/audioreactive/loadaudio';
-import Newtry from '@/Components/audioreactive/newtry copy'
-import Num from '@/Components/audioreactive/numbers'
-import Smile from '@/Components/audioreactive/audioCanvas'
-import Last from '@/Components/audioreactive/lastaudio'
-import Pokusaj from '@/Components/audioreactive/audioAnalizer'*/
-
-
-
-/*
- <Newtry></Newtry>
-
-ovaj num je audio reactive component sa brojevim
- <Num></Num>
-  <Num></Num>
-   <Newtry></Newtry>
-                  <Smile></Smile>
-                  <Last></Last>
-                   <Pokusaj></Pokusaj>
-*/ 
 
 export default function Dashboard({ auth }) {
     return (

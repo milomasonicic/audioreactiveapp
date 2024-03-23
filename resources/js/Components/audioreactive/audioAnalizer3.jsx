@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import AudioMotionAnalyzer from 'audiomotion-analyzer';
 
-export default function AudioAnalyzer(params) {
+export default function AudioAnalyzer3(params) {
   const [file, setFile] = useState(null);
   const containerRef = useRef();
   const audioRef = useRef();
@@ -16,12 +16,25 @@ export default function AudioAnalyzer(params) {
       const audioEl = audioRef.current;
 
       audioMotionRef.current = new AudioMotionAnalyzer( container, {
-          source: audioEl,
-          height: window.innerHeight/1.5,
-          width: window.innerWidth,
-          mode: 6,
-          barSpace: 0.1,
-          ledBars: true,
+        source: audioEl,
+        height: window.innerHeight/1.5,
+        width: window.innerWidth,
+        fsElement: container,
+        mode: 10,
+       
+        radial: 1,
+        radialInvert: 5,
+        gradient: 'prism',
+        lineWidth: 2.5,
+        fillAlpha: .4, 
+        barSpace: .8,
+        showPeaks: true,
+        outlineBars: true,
+        peakLine: true,
+        radius: 0.9,
+        reflexAlpha: 0.55,
+        
+      
       }
       )  
       

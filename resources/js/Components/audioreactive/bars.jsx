@@ -14,9 +14,9 @@ let animationController;
 
 export default function Bars() {
   const [file, setFile] = useState(null);
+  const audioRef = useRef();
   const [msg, setMsg] = useState("Poruka za promjeniti");
   const canvasRef = useRef();
-  const audioRef = useRef();
   const source = useRef();
   const analyzer = useRef();
 

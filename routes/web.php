@@ -37,9 +37,17 @@ Route::get('/colorfulbars', function () {
     return Inertia::render('ColorfulBars');
 })->middleware(['auth', 'verified'])->name('colorfulbars');
 
-Route::get('/smile', function () {
-    return Inertia::render('Smile');
-})->middleware(['auth', 'verified'])->name('smile');
+Route::get('/audioanalizer', function () {
+    return Inertia::render('Audioanalizer');
+})->middleware(['auth', 'verified'])->name('audioanalizer');
+
+Route::get('/audioanalizer2', function () {
+    return Inertia::render('Audioanalizer2');
+})->middleware(['auth', 'verified'])->name('audioanalizer2');
+
+Route::get('/audioanalizer3', function () {
+    return Inertia::render('Audioanalizer3');
+})->middleware(['auth', 'verified'])->name('audioanalizer3');
 
 Route::get('/numbers', function () {
     return Inertia::render('Numbers');
