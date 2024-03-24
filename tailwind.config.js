@@ -15,10 +15,16 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                caveat: ["Caveat", "cursive"],
             },
             maxWidth:{
                 container: "1440px"
             },
+
+            backgroundImage: {
+                'homepage': "url('/public/images/bgLoop1.webp')",
+                'hero1': "url('/public/images/hero1.webp')",
+              },
         },
     },
 

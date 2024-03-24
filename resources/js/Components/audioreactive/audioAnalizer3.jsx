@@ -21,7 +21,6 @@ export default function AudioAnalyzer3(params) {
         width: window.innerWidth,
         fsElement: container,
         mode: 10,
-       
         radial: 1,
         radialInvert: 5,
         gradient: 'prism',

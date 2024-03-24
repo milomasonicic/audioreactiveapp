@@ -27,31 +27,35 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
 Route::get('/about', function () {
     return Inertia::render('Aboutus');
-})->middleware(['auth', 'verified'])->name('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->name('contact');
 
 Route::get('/colorfulbars', function () {
     return Inertia::render('ColorfulBars');
-})->middleware(['auth', 'verified'])->name('colorfulbars');
+})->name('colorfulbars');
 
 Route::get('/audioanalizer', function () {
     return Inertia::render('Audioanalizer');
-})->middleware(['auth', 'verified'])->name('audioanalizer');
+})->name('audioanalizer');
 
 Route::get('/audioanalizer2', function () {
     return Inertia::render('Audioanalizer2');
-})->middleware(['auth', 'verified'])->name('audioanalizer2');
+})->name('audioanalizer2');
 
 Route::get('/audioanalizer3', function () {
     return Inertia::render('Audioanalizer3');
-})->middleware(['auth', 'verified'])->name('audioanalizer3');
+})->name('audioanalizer3');
 
 Route::get('/numbers', function () {
     return Inertia::render('Numbers');
-})->middleware(['auth', 'verified'])->name('numbers');
+})->name('numbers');
 
 
 Route::middleware('auth')->group(function () {
@@ -59,5 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//->middleware(['auth', 'verified'])
 
 require __DIR__.'/auth.php';
