@@ -16,6 +16,8 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 caveat: ["Caveat", "cursive"],
+                mono: ["Major Mono Display", "monospace"],
+                wave: ["Wavefont", "system-ui"]
             },
             maxWidth:{
                 container: "1440px"
@@ -24,6 +26,7 @@ export default {
             backgroundImage: {
                 'homepage': "url('/public/images/bgLoop1.webp')",
                 'hero1': "url('/public/images/hero1.webp')",
+                'heroImage': "url('/public/images/imageHero.jpg')",
               },
         },
     },

@@ -5,7 +5,7 @@ import NavLink from "../NavLink"
 export default function DarkSection (){
 
     return (
-        <div className="bg-black">
+        <div className="bg-black max-w-[1240px] mx-auto">
             <h1> Our cool visuslizer</h1>
             <NavLink href={route('audioanalizer')} active={route().current('audioanalizer')}>
                     audioanalizer 

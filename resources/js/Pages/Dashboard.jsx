@@ -16,17 +16,13 @@ export default function Dashboard({ auth }) {
     return (
        
 
-            <div className="">
+            <div className="bg-stone-50">
                 <Nav></Nav>
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                   <Hero></Hero>
+                <Hero></Hero>
                    <Light></Light>
                    <Dark></Dark>
                    <Newsletter></Newsletter>
                   
-                 
-                </div>
-               
 
             </div>
 
