@@ -33,8 +33,8 @@ export default function Box(){
         variants={boxVariant}
         initial="hidden"
         >
-           <div className="w-[100px] h-[100px] bg-red-700">
-            <h1>Box</h1>
+           <div className="w-[250px] h-[250px]">
+            <h1 className="text-2xl font-wave"> Colorful Bars</h1>
 
            </div>
         </motion.div>

@@ -9,7 +9,8 @@ import { useEffect } from "react";
 
 
 
-export default function Box1(){
+
+export default function Box1({title, colorfulbars}){
 
     const control = useAnimation()
     const [ref, inView] = useInView()
@@ -33,8 +34,10 @@ export default function Box1(){
         variants={boxVariant}
         initial="hidden"
         >
-           <div className="w-[150px] h-[150px] bg-red-700">
-            <h1>Box</h1>
+            <div className="w-[250px] h-[250px] border border-skyblue-400">
+            <h1> {title}</h1>
+            <h1 className="text-6xl font-wave text-green-400"> Colorful Barsskskskk sss</h1>
+          
 
            </div>
         </motion.div>

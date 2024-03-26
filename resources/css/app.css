@@ -4,3 +4,31 @@
 
 
 
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right,
+
+        #eff6ff,
+        #dbeafe,
+
+        #bfdbfe,
+
+        #93c5fd,
+
+        #60a5fa,
+
+        #3b82f6,
+        #ec4899
+
+    );
+
+
+    transform-origin: 0%;
+  }
+  
+
+

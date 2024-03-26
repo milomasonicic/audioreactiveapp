@@ -4,7 +4,7 @@ export default function Playground(){
 
     return(
         <div >
-            <div className='flex transform transition duration-500 hover:scale-75'>
+            <div className='mt-18 flex '>
 
                 <div>
 
@@ -15,8 +15,8 @@ export default function Playground(){
                 </div>
                 <div>
 
-                <h1 className='font-mono font-bold text-2xl text-stone-400 '>
-                    your    <span className="text-4xl font-bold font-caveat text-pink-400 mb-4">PLAY</span>ground
+                <h1 className='font-mono font-bold text-4xl text-stone-400 '>
+                    your    <span className="text-6xl font-bold font-caveat text-sky-300 mb-4">PLAY</span>ground
                 </h1>
                 </div>
             </div>
