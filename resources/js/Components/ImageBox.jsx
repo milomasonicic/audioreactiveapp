@@ -1,24 +1,31 @@
-
-import { motion, useAnimation, useScroll, useTransform } from "framer-motion";
-
-import { useRef } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 
-export default function ImageBox(){
+export default function ImageBox() {
 
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useTransform(scrollYProgress, [0, 1], [-200, 650]);
+  const variant = {
+    visible: {scale: 0.5},
+    hidden: {scale: 0.2},
+  }
+
+  const images = {
+    image_1:
+    '/images/hero5.jpg'
+
+  };
+
   return (
-    <section>
-      <div ref={ref}>
-      <img src='/images/hero5.jpg' ref={ref}></img>
-        
-      </div>
-      <motion.h2 style={{ y }}></motion.h2>
-    </section>
-  );
-    
-
-
+    <div>
+      <motion.img
+              src={images.image_1}
+              variants={variant}
+              initial="hidden"
+              whileInView="visible"
+            />
+    </div>
+  )
 }
+
+
+
+/*img src='/images/hero5.jpg' ref={ref}></img--*/

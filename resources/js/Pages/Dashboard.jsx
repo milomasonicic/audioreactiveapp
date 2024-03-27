@@ -23,7 +23,7 @@ export default function Dashboard() {
     return (
        
 
-            <div className="bg-stone-50">
+            <div className="bg-gray-100">
                   <motion.div
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
