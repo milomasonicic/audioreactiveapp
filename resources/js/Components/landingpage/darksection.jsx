@@ -1,46 +1,68 @@
 import NavLink from "../NavLink"
 import { motion, useAnimation } from "framer-motion";
 import ImageBox from "../ImageBox";
-
+import Box1 from "../Box1"
 
 
 export default function DarkSection (){
 
     const variant = {
-        visible: {scale: 1},
-        hidden: {scale: 0},
+        visible: {scale: 0.9},
+        hidden: {scale: 0.6},
       }
+
+      const variantH1 = {
+        visible: {opacty: 1, scale: 1},
+        hidden: {opacty: 0},
+      }
+    
     
 
     return (
         <div className="bg-stone-700">
 
-        <div className=" max-w-[1240px] min-h-[500px] mx-auto text-white flex">
+        <div className=" max-w-[1240px] min-h-[400px] mx-auto text-white ">
+
+            <div>
+            <motion.h1 
+              variants={variantH1}
+              initial="hidden"
+              whileInView="visible"
+            className='font-caveat  font-bold text-4xl text-white '>
+                OUR AUDIO VIZULIZER
+            </motion.h1>
+            </div>
           
-            <div className="w-full border border-white">
+            <div className="w-[99%]">
             <motion.div 
             variants={variant}
             initial="hidden"
             whileInView="visible">
 
                 <ul className="flex justify-between">
-                    <li>
-                        <h1> Our cool visuslizer</h1>
-                    </li>
+                   
 
                     <li>
 
                         <NavLink href={route('audioanalizer')} active={route().current('audioanalizer')}>
-                               
+                            <div>
+                               <Box1></Box1>
+                               <h1 className="text-center">
                                 audioanalizer 
+                               </h1>
+                            </div>
                         </NavLink>
 
                     </li>
 
                     <li>
                         <NavLink href={route('audioanalizer2')} active={route().current('audioanalizer2')}>
-                              
-                                audioanalizer 2
+                            <div>
+                                <Box1></Box1>
+                                <h1 className="text-center">
+                                    audioanalizer 2
+                                </h1>
+                            </div>
                         </NavLink>
 
                     </li>
@@ -48,8 +70,12 @@ export default function DarkSection (){
                     <li>
 
                         <NavLink href={route('audioanalizer3')} active={route().current('audioanalizer3')}>
-                             
-                              audioanalizer 3
+                            <div>
+                            <Box1></Box1>
+                              <h1 className="text-center">
+                                audioanalizer 3
+                              </h1>
+                            </div>
                         </NavLink>
 
                     </li>

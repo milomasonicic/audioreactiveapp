@@ -8,14 +8,16 @@ import { motion, useAnimation } from "framer-motion";
 export default function LightSection (){
 
     const icons = {
-        icon1: "images/soudnW.gif",
-        icon2: "images/icons8-wave-96.png",
+        icon1: "images/bgBars.png",
+        icon2: "images/soudnW.gif",
+        //icon2: "images/icons8-wave-96.png",
         icon3: "images/audio-waves.png",
     }
 
     
   const variant = {
-    visible: {scale: 1},
+        
+        visible: {scale: 1, transition:{duration: 2} },
     hidden: {scale: 0.8},
   }
 
@@ -24,23 +26,24 @@ export default function LightSection (){
     return (
 
         <div className="bg-stone-50 ">
-            <div className="min-h-[400px] max-w-[1240px] mx-auto min-h-[650px] pt-22 pt-16">
+            <div className="min-h-[400px] max-w-[1240px] mx-auto min-h-[650px] pt-16">
+                
+                <Playground></Playground>
                 <motion.div 
                   variants={variant}
                   initial="hidden"
                   whileInView="visible"
                 
-                className="pt-12 max-w-[45%] min-h-[450px] mx-auto mt-14 border border-dashed border-8 border-sky-300 rounded-3xl">
+                className=" w-full min-h-[450px] mx-auto mt-8 ">
 
                      
-                    <Playground></Playground>
 
-                    <ul className="w-[99%] pt-8">
-                        <li className="pt-6">
+                    <ul className="w-[99%] flex">
+                        <li className="">
                             <NavLink href={route('colorfulbars')} active={route().current('colorfulbars')}>
                             <div>
                                 <Box1 icon={icons.icon3} iconUpper={icons.icon1}></Box1>
-                                <h1 className="font-mono">
+                                <h1 className="text-center">
                                     colorful bArs
                                 </h1>
                             </div>
@@ -48,11 +51,11 @@ export default function LightSection (){
 
                         </li>
 
-                        <li className="pt-6">
+                        <li className="">
                             <NavLink href={route('numbers')} active={route().current('numbers')}>
                             <div>
                             <Box1 icon={icons.icon2} iconUpper={icons.icon1}></Box1>
-                            <h1 className="font-mono">
+                            <h1 className="text-center">
                                 number bArs
                             </h1>
 

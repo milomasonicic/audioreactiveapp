@@ -30,12 +30,12 @@ export default function Box1({icon, iconUpper}){
 
   
     const boxVariant = {
-        visible: { opacity: 1, scale: 0.9, transition:{duration: 1} },
-        hidden: { opacity: 0.95, scale: 0.8 },
+        visible: { opacity: 1, scale: 0.8, transition:{duration: 3} },
+        hidden: { opacity: 0.85, scale: 0.6 },
       }   
 
     return (
-      <div className="max-w-[140px] " >
+      <div className=" " >
         <motion.div className="box"
       
         ref={ref}
@@ -44,9 +44,10 @@ export default function Box1({icon, iconUpper}){
         initial="hidden"
         
         >
-            <div className="w-[62px] h-[70px]  flex">
-              <img src={iconUpper}></img>
-              <img src={icon}></img>
+            <div className="transition ease-in-out delay-20 hover:scale-105  w-[320px] h-[220px] rounded-3xl ring-offset-1 ring-1 relative">
+              <img src={icon} alt="" className="absolute w-[25%] top-1/3 left-1/3" />
+              <img src={iconUpper} className="w-full h-full rounded-3xl"></img>
+            
            </div>
         </motion.div>
 
