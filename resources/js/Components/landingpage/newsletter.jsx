@@ -1,9 +1,9 @@
 export default function Newsletter(){
 
     return (
-        <div class="bg-gradient-to-r from-pink-300 via-green-300 to-sky-300 ...">
-              <div className=" max-w-[1240px] min-h-[180px] mx-auto flex justfy-center">
-                <div className="w-[65%] mx-auto pt-12">
+        <div class="bg-gradient-to-r from-pink-300 via-green-300 to-sky-300 ... border-y-2 border-dashed border-[#f4fc03]">
+              <div className=" max-w-[1240px] min-h-[300px] mx-auto flex justfy-center">
+                <div className="w-[65%] mx-auto pt-20">
                     <h1> SUbsivite</h1>
                     <p>We won t bother you much</p>
                 <input type="text" />

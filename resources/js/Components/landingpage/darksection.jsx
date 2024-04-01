@@ -13,7 +13,7 @@ export default function DarkSection (){
 
       const variantH1 = {
         visible: {opacty: 1, scale: 1},
-        hidden: {opacty: 0},
+        hidden: {opacty: 0, scale:0.5},
       }
     
     
@@ -28,8 +28,8 @@ export default function DarkSection (){
               variants={variantH1}
               initial="hidden"
               whileInView="visible"
-            className='font-caveat  font-bold text-4xl text-white '>
-                OUR AUDIO VIZULIZER
+            className='font-mono  font-bold text-4xl text-white '>
+                our audio vizualizers
             </motion.h1>
             </div>
           

@@ -8,8 +8,10 @@ import { useScroll, motion } from "framer-motion";
 import Hero from '@/Components/landingpage/hero'
 import Light from '@/Components/landingpage/lightsection'
 import Dark from '@/Components/landingpage/darksection'
+import Footer from '@/Components/landingpage/footer'
 import Newsletter from '@/Components/landingpage/newsletter'
 import Nav from '@/Components/Nav';
+
 
 
 
@@ -34,6 +36,8 @@ export default function Dashboard() {
                    <Light></Light>
                    <Dark></Dark>
                    <Newsletter></Newsletter>
+
+                   <Footer></Footer>
                   
 
             </div>
