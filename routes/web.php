@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,11 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+//mesages
+
+Route::get('/m', [MessageController::class, 'index'])->name('m');
+Route::post('/mstore', [MessageController::class, 'store'])->name('mesage.store');
 
 Route::get('/about', function () {
     return Inertia::render('Aboutus');
@@ -58,9 +64,13 @@ Route::get('/numbers', function () {
 })->name('numbers');
 
 
-Route::get('/admin', function () {
+/*Route::get('/admin', function () {
     return Inertia::render('Admin');
-})->name('admin');
+})->name('admin');*/
+
+Route::get('/messages', function () {
+    return Inertia::render('Admin');
+})->name('messages');
 
 
 Route::middleware('auth')->group(function () {

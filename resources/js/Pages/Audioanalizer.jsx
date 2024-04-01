@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import Canvas from '@/Components/audioreactive/canvas';
+
 import AudioAnalyzer from '@/Components/audioreactive/audioAnalizer';
 
 export default function an() {

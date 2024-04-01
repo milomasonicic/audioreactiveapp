@@ -5,7 +5,7 @@ import { router } from '@inertiajs/react'
 export default function ContactForm(){
 
     const [values, setValues] = useState({
-        last_name: "",
+        name: " ",
         email: "",
       })
 
@@ -18,11 +18,13 @@ export default function ContactForm(){
         ...values,
         [key]: value,
     }))
+
+    console.log("values", values)
   }  
 
   function handleSubmit(e) {
     e.preventDefault()
-    router.post('/admin', values)
+    router.post('/mstore', values)
   }
 
     return (
@@ -30,21 +32,20 @@ export default function ContactForm(){
               <div className=" max-w-[1240px] min-h-[300px] mx-auto flex justify-center"> 
                 <div>
                     <h1 className="text-4xl font-mono font-caveat"> contAct us</h1>
-                    <form action="" className="w-[400px]"  onSubmit={handleSubmit}>
+                    <form className="w-[400px]"  onSubmit={handleSubmit}>
                         
 
                     
-                      <label htmlFor="last_name">Name:</label>
-                    <input id="last_name" value={values.last_name} onChange={handleChange} />
+                      <label htmlFor="name">Name:</label>
+                    <input id="name" value={values.name} onChange={handleChange} />
                      <label htmlFor="email">Email:</label>
                      <input id="email" value={values.email} onChange={handleChange} />
 
                      <h5>Your message</h5>
                   
 
+                     <button type="submit">Submit</button>
                     
-                    
-                      <button type="button" onClick={()=>changeColor(color)}   class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">SEND</button>
                     
                     
                     </form>
@@ -60,3 +61,4 @@ export default function ContactForm(){
 }
 
 /*  <!--textarea className="w-[550px]" name="" id="" cols="30" rows="10"></textarea--> */
+/*<button type="button" onClick={()=>changeColor(color)}   class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">SEND</button>*/

@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import Canvas from '@/Components/audioreactive/canvas';
+
 import Bars from '@/Components/audioreactive/bars';
 
 import Pokusaj from '@/Components/audioreactive/audioAnalizer';

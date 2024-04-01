@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import Canvas from '@/Components/audioreactive/canvas';
+
 import Num from   '@/Components/audioreactive/songdatavizulizer'
 
 

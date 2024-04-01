@@ -2,29 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+use App\Models\Message;
 use Illuminate\Http\Request;
+
 
 class MessageController extends Controller
 {
     //
 
-    public function index()
+   public function index()
     {
-        return Inertia::render('Users/Index', [
-          'users' => User::all(),
+        return Inertia::render('Message', [
+          'messages' => Message::all(),
         ]);
     }
 
     //
 
-    public function store(Request $request)
+   public function store(Request $request)
     {
-        User::create($request->validate([
-          //'' => ['required', 'max:50'],
+        /*dd($request);
+        Message::create($request->validate([
+        
           'name' => ['required', 'max:50'],
           'email' => ['required', 'max:50', 'email'],
-        ]));
+        ]));*/
 
-        return to_route('users.index');
+        Message::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'content' => "content",
+        ]);
+
+        return to_route('m');
     }
+
+   /* public function show(Message $message)
+    {
+        return Inertia::render('Message', [
+          'message' => $message
+        ]);
+    }*/
 }
