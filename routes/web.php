@@ -16,16 +16,16 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+});*/
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
@@ -56,6 +56,11 @@ Route::get('/audioanalizer3', function () {
 Route::get('/numbers', function () {
     return Inertia::render('Numbers');
 })->name('numbers');
+
+
+Route::get('/admin', function () {
+    return Inertia::render('Admin');
+})->name('admin');
 
 
 Route::middleware('auth')->group(function () {
