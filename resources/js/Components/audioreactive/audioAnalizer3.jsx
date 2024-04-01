@@ -32,8 +32,7 @@ export default function AudioAnalyzer3(params) {
         peakLine: true,
         radius: 0.9,
         reflexAlpha: 0.55,
-        
-      
+            
       }
       )  
       

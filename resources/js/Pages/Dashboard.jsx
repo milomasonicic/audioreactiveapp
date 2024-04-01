@@ -1,8 +1,3 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
-
-import { Button } from '@mui/base';
-
 import Scroll from '@/Components/ScrollBar';
 import { useScroll, motion } from "framer-motion";
 import Hero from '@/Components/landingpage/hero'
@@ -41,10 +36,6 @@ export default function Dashboard() {
                   
 
             </div>
-
-
-            
-      
     );
 }
 //<!--AuthenticatedLayout
