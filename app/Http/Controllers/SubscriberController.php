@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Mail\Subscribed;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SubscriberController extends Controller
 {
@@ -24,6 +26,10 @@ class SubscriberController extends Controller
             'email'=> $request->email
         ]);
 
+    
+
+        Mail::to('bobamas106@gmail.com')->send(new Subscribed([
+       ]));
 
         return to_route('subscribers.index');
     }
