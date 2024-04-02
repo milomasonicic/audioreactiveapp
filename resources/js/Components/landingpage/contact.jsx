@@ -7,6 +7,7 @@ export default function ContactForm(){
     const [values, setValues] = useState({
         name: " ",
         email: "",
+        content: " "
       })
 
 
@@ -19,7 +20,7 @@ export default function ContactForm(){
         [key]: value,
     }))
 
-    console.log("values", values)
+ 
   }  
 
   function handleSubmit(e) {
@@ -41,8 +42,10 @@ export default function ContactForm(){
                      <label htmlFor="email">Email:</label>
                      <input id="email" value={values.email} onChange={handleChange} />
 
-                     <h5>Your message</h5>
-                  
+                     <label htmlFor="content">Your message:</label>
+                     <textarea id="content" value={values.content} onChange={handleChange}  name="content" cols="30" rows="10"></textarea>
+                     
+
 
                      <button type="submit">Submit</button>
                     

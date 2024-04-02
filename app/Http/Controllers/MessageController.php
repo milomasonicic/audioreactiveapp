@@ -11,32 +11,25 @@ class MessageController extends Controller
 {
     //
 
-   public function index()
-    {
-        return Inertia::render('Message', [
-          'messages' => Message::all(),
-        ]);
-    }
+    public function index() {
 
+      return Inertia::render('Message', [
+        'messages' => Message::all()
+      ]);
+    }
     //
 
-   public function store(Request $request)
-    {
-        /*dd($request);
-        Message::create($request->validate([
-        
-          'name' => ['required', 'max:50'],
-          'email' => ['required', 'max:50', 'email'],
-        ]));*/
+    public function store(Request $request) {
+       Message::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'content' => $request->content,
+       ]);
 
-        Message::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'content' => "content",
-        ]);
-
-        return to_route('m');
+       return to_route('dashboard');
     }
+
+  
 
    /* public function show(Message $message)
     {

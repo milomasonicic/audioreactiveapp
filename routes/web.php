@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,12 @@ Route::get('/', function () {
 
 //mesages
 
-Route::get('/m', [MessageController::class, 'index'])->name('m');
-Route::post('/mstore', [MessageController::class, 'store'])->name('mesage.store');
+Route::get('/m', [MessageController::class, 'index'])->name('mmessages');
+Route::post('/mstore', [MessageController::class, 'store'])->name('message.store');
+
+//subscribes
+Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
+Route::post('/subscriberstore', [SubscriberController::class, 'store'])->name('subscribers.store');
 
 Route::get('/about', function () {
     return Inertia::render('Aboutus');
