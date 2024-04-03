@@ -22,16 +22,23 @@ class SubscriberController extends Controller
 
     public function store(Request $request) {
 
-        Subscriber::create([
+        $sub = Subscriber::create([
             'email'=> $request->email
         ]);
 
-    
-
-        Mail::to('bobamas106@gmail.com')->send(new Subscribed([
-       ]));
+        $id = $sub->id;
+        Mail::to($request->email)->send(new Subscribed($id));
 
         return to_route('subscribers.index');
+    }
+
+    public function delete($id) {
+
+        $subscriber = Subscriber::findOrFail($id);
+        $subscriber -> delete();
+
+       return view ('goodbye');
+
     }
 
     

@@ -16,9 +16,9 @@ class Subscribed extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($id)
     {
-        
+        $this -> id = $id;
         //
     }
 
@@ -29,6 +29,7 @@ class Subscribed extends Mailable
     {
         return new Envelope(
             subject: 'We see music',
+            
         );
     }
 
@@ -39,6 +40,9 @@ class Subscribed extends Mailable
     {
         return new Content(
             view: 'email',
+            with: [
+                'id' => $this->id
+            ]
         );
     }
 

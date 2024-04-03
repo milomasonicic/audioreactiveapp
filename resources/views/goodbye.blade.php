@@ -49,14 +49,7 @@
     <div class="container">
         
         <div class="message">
-            <p>Dear</p>
-            <p>Thank you for providing your details!
-
-                <form method="POST"  action="{{url ("/api/subscribers/{$id}")}}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"> Unsubscribe</button>
-                </form>
+            <h1>This is not Goodbye</h1>
            
         </div>
         
