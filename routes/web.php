@@ -39,6 +39,7 @@ Route::post('/mstore', [MessageController::class, 'store'])->name('message.store
 //subscribes
 Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
 Route::post('/subscriberstore', [SubscriberController::class, 'store'])->name('subscribers.store');
+Route::post('/subscriberMail', [SubscriberController::class, 'sendMailToSubscribers'])->name('subscribers.sendMail');
 
 Route::get('/about', function () {
     return Inertia::render('Aboutus');

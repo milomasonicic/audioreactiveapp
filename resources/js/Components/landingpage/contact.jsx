@@ -34,8 +34,7 @@ export default function ContactForm(){
                 <div>
                     <h1 className="text-4xl font-mono font-caveat"> contAct us</h1>
                     <form className="w-[400px]"  onSubmit={handleSubmit}>
-                        
-
+    
                     
                       <label htmlFor="name">Name:</label>
                     <input id="name" value={values.name} onChange={handleChange} />

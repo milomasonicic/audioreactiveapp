@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Mail\MailToAll;
 use App\Mail\Subscribed;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
@@ -39,6 +40,16 @@ class SubscriberController extends Controller
 
        return view ('goodbye');
 
+    }
+
+    public function sendMailToSubscribers(Request $request) {
+       // dd($request);
+        $subscribers = Subscriber::all();
+
+        foreach ($subscribers as $subscriber) {
+            Mail::to($subscriber->email)->send(new MailToAll($request->content, $request->subject));
+        } 
+        
     }
 
     
