@@ -29,6 +29,16 @@ class MessageController extends Controller
        return to_route('dashboard');
     }
 
+    public function delete($id) {
+
+      $message = Message::findOrFail($id);
+      $message -> deleted = true;
+      $message -> save();
+      
+     return to_route ('mmessages');
+
+  }
+
   
 
    /* public function show(Message $message)

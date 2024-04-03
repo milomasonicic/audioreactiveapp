@@ -6,9 +6,6 @@ import About from '@/Components/landingpage/aboutus'
 import ContactForm from '@/Components/landingpage/contact';
 import Nav from '@/Components/Nav';
 
-
-
-
 export default function Contact() {
 
     
