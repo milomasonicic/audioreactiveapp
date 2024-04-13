@@ -1,8 +1,7 @@
 import NavLink from "../NavLink"
 import Playground from "../TitlePlayground"
 import Box1 from "../Box1"
-import ImageBox from "../ImageBox"
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 
 export default function LightSection (){
@@ -38,7 +37,7 @@ export default function LightSection (){
 
                      
 
-                    <ul className="w-[99%] flex">
+                    <ul className="md:w-[99%] w-[59%] md:flex flex-column">
                         <li className="">
                             <NavLink href={route('colorfulbars')} active={route().current('colorfulbars')}>
                             <div>

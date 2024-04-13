@@ -28,7 +28,7 @@ export default function DarkSection (){
               variants={variantH1}
               initial="hidden"
               whileInView="visible"
-            className='font-mono  font-bold text-4xl text-white '>
+            className='font-mono  ml-[12px] md:ml-[0px] font-bold text-4xl text-white '>
                 our audio vizualizers
             </motion.h1>
             </div>
@@ -39,7 +39,7 @@ export default function DarkSection (){
             initial="hidden"
             whileInView="visible">
 
-                <ul className="flex justify-between">
+                <ul className="flex-col md:flex md:flex-row md:justify-between">
                    
 
                     <li>
