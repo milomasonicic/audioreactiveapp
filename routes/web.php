@@ -31,15 +31,26 @@ Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-//mesages
-Route::get('/m', [MessageController::class, 'index'])->name('mmessages');
-Route::post('/mdelete', [MessageController::class, 'delete'])->name('messages.delete');
-Route::post('/mstore', [MessageController::class, 'store'])->name('message.store');
 
-//subscribes
-Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
-Route::post('/subscriberstore', [SubscriberController::class, 'store'])->name('subscribers.store');
-Route::post('/subscriberMail', [SubscriberController::class, 'sendMailToSubscribers'])->name('subscribers.sendMail');
+
+Route::middleware('auth')->group(function () {
+    
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //mesages
+    Route::get('/admindashboard', [MessageController::class, 'index'])->name('mmessages');
+    Route::post('/mdelete', [MessageController::class, 'delete'])->name('messages.delete');
+    Route::post('/mstore', [MessageController::class, 'store'])->name('message.store');
+
+    //subscribes
+    Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
+    Route::post('/subscriberstore', [SubscriberController::class, 'store'])->name('subscribers.store');
+    Route::post('/subscriberMail', [SubscriberController::class, 'sendMailToSubscribers'])->name('subscribers.sendMail');
+
+});
+
+
 
 Route::get('/about', function () {
     return Inertia::render('Aboutus');
@@ -74,16 +85,12 @@ Route::get('/numbers', function () {
     return Inertia::render('Admin');
 })->name('admin');*/
 
-Route::get('/messages', function () {
+/*Route::get('/messages', function () {
     return Inertia::render('Admin');
-})->name('messages');
+})->name('messages');*/
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
 
 //->middleware(['auth', 'verified'])
 

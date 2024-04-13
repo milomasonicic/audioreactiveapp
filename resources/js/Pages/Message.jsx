@@ -2,8 +2,20 @@
 import { Head } from '@inertiajs/react'
 import {useState} from  "react"
 import { router } from '@inertiajs/react'
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
-export default function Welcome({ messages }) {
+
+
+//<!--AuthenticatedLayout
+//user={auth.user}
+//header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>}
+//>
+//<Head title="Dashboard" />
+//</AuthenticatedLayout-->
+
+export default function Welcome({ messages, auth }) {
+
+  
 
   const [values, setValues] = useState({
     id: " ",
@@ -29,15 +41,16 @@ export default function Welcome({ messages }) {
 
 
   return (
+    
     <div>
 
-      <h1>Hi</h1>
+<AuthenticatedLayout
+            user={auth.user}
+            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Glad to see you again! </h2>}
+        >
+       
 
-
-
-    
-
-<div class="relative overflow-x-auto">
+        <div class="relative overflow-x-auto mx-auto">
     <table class="w-[75%] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -76,8 +89,17 @@ export default function Welcome({ messages }) {
     </table>
 </div>
 
+        
+        </AuthenticatedLayout> 
 
      
+
+
+
+    
+
+
+
 
     </div>
  

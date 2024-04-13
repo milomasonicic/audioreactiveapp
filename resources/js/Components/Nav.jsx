@@ -5,7 +5,7 @@ export default function Nav() {
     return (
         <div className="bg-pink max-w-[1240px] mx-auto">
            
-                <ul className="flex justify-between px-12 min-h-[70px] items-center">
+                <ul className="flex justify-between md:px-12 px-4 min-h-[70px] items-center">
                     <li>
                         <NavLink href={route('dashboard')} active={route().current('dashboard')} className="text-3xl font-wave">
                             HomeAudioVizulizerHomeAudioVizulizerHome

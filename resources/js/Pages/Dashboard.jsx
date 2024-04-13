@@ -8,9 +8,6 @@ import Newsletter from '@/Components/landingpage/newsletter'
 import Nav from '@/Components/Nav';
 
 
-
-
-
 export default function Dashboard() {
     
     const { scrollYProgress } = useScroll({
