@@ -74,17 +74,3 @@ export default function LightSection (){
     )
 }
 
-/*<ImageBox></ImageBox>*/
-
-/*
-
-<NavLink href={route('colorfulbars')} active={route().current('colorfulbars')}>
-
-</NavLink>
-</li>
-
-                
-                <li>
-                <NavLink href={route('numbers')} active={route().current('numbers')}>
-                    Numbers
-                 </NavLink> */

@@ -29,23 +29,24 @@ export default function ContactForm(){
   }
 
     return (
-        <div class="bg-gradient-to-r from-blue-600 via-orange-600 to-purple-600 ...">
+
+        <div class="bg-gradient-to-r  h-[650px] flex justify-center items-center from-blue-600 via-orange-600 to-purple-600 ...">
               <div className=" max-w-[1240px] min-h-[300px] mx-auto flex justify-center"> 
                 <div>
-                    <h1 className="text-4xl font-mono font-caveat"> contAct us</h1>
-                    <form className="w-[400px]"  onSubmit={handleSubmit}>
+                    <h1 className="text-4xl font-mono font-bold text-stone-100 font-caveat mb-2 ml-4 md:ml-0"> contAct us</h1>
+                    <p className="text-stone-100 mb-4 ml-4 md:ml-0"> Get in touch. Share your ideas.</p>
+                    <form className="md:w-[600px] w-[90%] ml-4 md:ml-0"  onSubmit={handleSubmit}>
+                    <div className="md:inline">
+                      <label htmlFor="name" className="text-stone-100">Name:</label>
+                       <input className="mb-2 md:w-[220px] w-[90%]" id="name" value={values.name} onChange={handleChange} />
+                    </div>
+                    <div className="md:inline">
+                     <label htmlFor="email" className="text-stone-100 md:ml-4" >Email:</label>
+                     <input id="email" className="mb-2 md:w-[220px] w-[90%]" value={values.email} onChange={handleChange} />
+                    </div>  
+                     <textarea id="content" className="w-[90%] md:w-[550px] mb-2" value={values.content} onChange={handleChange}  name="content" cols="30" rows="10"></textarea>
                     
-                      <label htmlFor="name">Name:</label>
-                    <input id="name" value={values.name} onChange={handleChange} />
-                     <label htmlFor="email">Email:</label>
-                     <input id="email" value={values.email} onChange={handleChange} />
-
-                     <label htmlFor="content">Your message:</label>
-                     <textarea id="content" value={values.content} onChange={handleChange}  name="content" cols="30" rows="10"></textarea>
-                     
-
-
-                     <button type="submit">Submit</button>
+                     <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ml-[3px]">Send</button>
                     
                     
                     
