@@ -23,13 +23,10 @@ export default function Contact() {
       />
                 <Scroll></Scroll>
                 <Nav></Nav>
-               
                 <About></About>
                 <ContactForm></ContactForm>
-                
-                   <Footer></Footer>
-                  
-
+                <Footer></Footer>
+              
             </div>
     );      
 
