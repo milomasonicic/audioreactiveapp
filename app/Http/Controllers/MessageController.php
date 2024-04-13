@@ -26,7 +26,7 @@ class MessageController extends Controller
         'content' => $request->content,
        ]);
 
-       return to_route('dashboard');
+       return to_route('contact');
     }
 
     public function delete($id) {
@@ -34,7 +34,7 @@ class MessageController extends Controller
       $message = Message::findOrFail($id);
       $message -> deleted = true;
       $message -> save();
-      
+
      return to_route ('mmessages');
 
   }

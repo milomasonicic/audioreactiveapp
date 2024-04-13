@@ -32,11 +32,8 @@ Route::get('/', function () {
 })->name('dashboard');
 
 //mesages
-
 Route::get('/m', [MessageController::class, 'index'])->name('mmessages');
-
 Route::post('/mdelete', [MessageController::class, 'delete'])->name('messages.delete');
-
 Route::post('/mstore', [MessageController::class, 'store'])->name('message.store');
 
 //subscribes
