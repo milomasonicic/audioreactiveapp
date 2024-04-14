@@ -39,6 +39,14 @@ class MessageController extends Controller
 
   }
 
+  public function show($id) { 
+
+    return Inertia::render('MessageSingle',  [
+      'message' => Message::findOrFail($id)
+    ] );
+
+}
+
   
 
    /* public function show(Message $message)

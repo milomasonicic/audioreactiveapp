@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admindashboard', [MessageController::class, 'index'])->name('mmessages');
     Route::post('/mdelete', [MessageController::class, 'delete'])->name('messages.delete');
     Route::post('/mstore', [MessageController::class, 'store'])->name('message.store');
+    Route::get('/mcontnent/{id}', [MessageController::class, 'show'])->name('message.content');
+
 
     //subscribes
     Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
