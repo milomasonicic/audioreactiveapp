@@ -41,16 +41,26 @@ Route::middleware('auth')->group(function () {
     //mesages
     Route::get('/admindashboard', [MessageController::class, 'index'])->name('mmessages');
     Route::post('/mdelete', [MessageController::class, 'delete'])->name('messages.delete');
-    Route::post('/mstore', [MessageController::class, 'store'])->name('message.store');
+    
     Route::get('/mcontnent/{id}', [MessageController::class, 'show'])->name('message.content');
+    Route::delete('/mdelete/{id}', [MessageController::class, 'delete'])->name('message.delete');
 
 
     //subscribes
     Route::get('/subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
-    Route::post('/subscriberstore', [SubscriberController::class, 'store'])->name('subscribers.store');
     Route::post('/subscriberMail', [SubscriberController::class, 'sendMailToSubscribers'])->name('subscribers.sendMail');
-
+    
 });
+
+//newsletter
+Route::post('/subscriberstore', [SubscriberController::class, 'store'])->name('subscribers.store');
+
+//messages
+Route::post('/mstore', [MessageController::class, 'store'])->name('message.store');
+
+//messaage status
+Route::post('/mupdate/{id}', [MessageController::class, 'updateStatusToTrue']);
+
 
 
 

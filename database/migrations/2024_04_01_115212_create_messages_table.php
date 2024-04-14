@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('content');
+            $table->boolean('status');
             $table->timestamps();
+            $table->softDeletes();
+            
         });
     }
 

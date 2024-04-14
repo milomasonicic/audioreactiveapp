@@ -13,8 +13,10 @@ class MessageController extends Controller
 
     public function index() {
 
+      $messages = Message::orderBy('created_at', 'desc')->get(); 
+ 
       return Inertia::render('Message', [
-        'messages' => Message::all()
+        'messages' => $messages
       ]);
     }
     //
@@ -24,6 +26,7 @@ class MessageController extends Controller
         'name' => $request->name,
         'email' => $request->email,
         'content' => $request->content,
+        'status'=> false
        ]);
 
        return to_route('contact');
@@ -32,27 +35,34 @@ class MessageController extends Controller
     public function delete($id) {
 
       $message = Message::findOrFail($id);
-      $message -> deleted = true;
-      $message -> save();
+      $message -> delete();
 
-     return to_route ('mmessages');
 
   }
 
+  //PROVJERITI OVO
   public function show($id) { 
 
+    $message = Message::findOrfail($id);
+
+    $message->status = true;
+    $message->save();   
+
     return Inertia::render('MessageSingle',  [
-      'message' => Message::findOrFail($id)
+      'message' => $message
     ] );
 
+  }
+
+  public function updateStatusToTrue(Request $request, $id) {
+
+    $message = Message::findOrfail($id);
+
+    $message->status = true;
+    $message->save();   
+    
+    return response()->noContent();
+  }
+   
 }
 
-  
-
-   /* public function show(Message $message)
-    {
-        return Inertia::render('Message', [
-          'message' => $message
-        ]);
-    }*/
-}

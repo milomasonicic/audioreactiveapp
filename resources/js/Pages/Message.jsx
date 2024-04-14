@@ -3,6 +3,8 @@ import { Head } from '@inertiajs/react'
 import {useState} from  "react"
 import { router } from '@inertiajs/react'
 
+
+
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 export default function Welcome({ messages, auth }) {
@@ -11,20 +13,31 @@ export default function Welcome({ messages, auth }) {
     id: " ",
   })
 
-  function handleButtonClick(id) {
-   
-    /*router.get('/mcontnent', id {
-      id: "id",
-    })
-
-*/
-
+  function changePage(id){
     router.get(`mcontnent/${id}`)
+  }
+
+  function changeStatus(id){
+    router.post(`mupdate/${id}`)
+  }
+
+  //two function onclick
+ function handleButtonClick(id) {
+     changePage(id)
+
+     setTimeout(() => {
+       changeStatus(id)
+     }, 500)
+    
     
   }
 
+ 
 
-
+  function handleDeleteClick(id)  {
+    router.delete(`mdelete/${id}`)
+  } 
+  
     function handleChange(e) {
     const key = e.target.id;
     const value = e.target.value
@@ -53,7 +66,7 @@ export default function Welcome({ messages, auth }) {
        
 
         <div class="relative overflow-x-auto mx-auto " className="max-w-[1240px] mx-auto">
-    <table class="w-[75%] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class=" mt-12 w-[95%] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
@@ -64,6 +77,14 @@ export default function Welcome({ messages, auth }) {
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Content
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Delete
+                </th>
+
+                <th scope="col" class="px-6 py-3">
+                    Status
+                    SREDITI RUTU ZA STATUS
                 </th>
                
             </tr>
@@ -82,8 +103,18 @@ export default function Welcome({ messages, auth }) {
             
             
             <button 
-            onClick={() => handleButtonClick(message.id)}
+            onClick={() => handleButtonClick(message.id) }
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"> See the messages</button>
+           
+            </td>
+            <td>
+            <button 
+            onClick={() => handleDeleteClick(message.id)}
+            class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"> Delete</button>
+            </td>
+
+            <td>
+              Unread
             </td>
             
         </tr>
