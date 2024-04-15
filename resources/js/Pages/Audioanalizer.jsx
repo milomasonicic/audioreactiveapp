@@ -1,17 +1,25 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-
+import Nav from '@/Components/Nav';
+import Footer from '@/Components/landingpage/footer';
 import AudioAnalyzer from '@/Components/audioreactive/audioAnalizer';
 
 export default function an() {
     return (
-       <div>
-        <h1>Audio analyzer</h1>
-        <div className='w-[1440px] mx-auto'>
-            <AudioAnalyzer></AudioAnalyzer>
+        <div>
+            <div className='bg-[#44403C] pb-[30px]'>
+                <Nav></Nav>
+            
+                <div className='max-w-[1140px] mt-[25px] mx-auto border border-white-700 rounded-3xl bg-[#54504d] h-[600px] '>
+                    <AudioAnalyzer></AudioAnalyzer>
+                    
+                </div>
 
+            </div>
+
+            <Footer></Footer>
         </div>
        
-       </div>
+       
     );
 }
