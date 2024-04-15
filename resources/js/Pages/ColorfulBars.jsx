@@ -1,17 +1,26 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
 
+import { Head } from '@inertiajs/react';
+import Nav from '@/Components/Nav';
+import Footer from '@/Components/landingpage/footer';
 import Bars from '@/Components/audioreactive/bars';
 
-import Pokusaj from '@/Components/audioreactive/audioAnalizer';
+
 
 export default function colorfulbars() {
     return (
-       <div className='max-w-container mx-auto border border-red-700'>
-        <h1>Colorful bars</h1>
+        <div>
+       <div className='bg-gray-100 pb-[150px] '>
         
-           <Bars></Bars>
-        
+        <Nav></Nav>  
+        <div className='mt-[25px] max-w-container mx-auto border border-white-700 rounded-3xl pt-12 pb-12 bg-gray-50'>
+            <Bars></Bars>
+
+        </div>
        </div>
+
+        <div className=''>
+            <Footer></Footer>   
+        </div>
+        </div>
     );
 }

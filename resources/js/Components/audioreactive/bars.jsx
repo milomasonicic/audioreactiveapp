@@ -102,29 +102,25 @@ export default function Bars() {
     let start = 0
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     for (let i = 0; i < songData.length; i++) {
-      // compute x coordinate where we would draw
-      //start = i * 8;
+   
       start = i * 50 ;
-      //create a gradient for the  whole canvas
-     
   
-    ctx.fillStyle = coloroneRef.current;
-    ctx.fillRect(start  * nubmerOfbars, canvasRef.current.height - heightRef.current - randomnessRef.current, bar_width, 30 + (-songData[i] - 150) * 0.9);
-    
-    ctx.fillStyle = colortwoRef.current;
-    ctx.fillRect(start * nubmerOfbars , canvasRef.current.height - heightRef.current - randomnessRef.current, bar_width , 200 + (-songData[i] - 150) *  0.5 );
-
-    ctx.fillStyle = colorthreeRef.current;
-    ctx.fillRect(start * nubmerOfbars, canvasRef.current.height - randomnessRef.current, bar_width, -songData[i] );
-    
+      ctx.fillStyle = coloroneRef.current;
+      ctx.fillRect(start  * nubmerOfbars, canvasRef.current.height - heightRef.current - randomnessRef.current, bar_width, 30 + (-songData[i] - 150) * 0.9);
+      
+      ctx.fillStyle = colortwoRef.current;
+      ctx.fillRect(start * nubmerOfbars , canvasRef.current.height - heightRef.current - randomnessRef.current, bar_width , 200 + (-songData[i] - 150) *  0.5 );
+  
+      ctx.fillStyle = colorthreeRef.current;
+      ctx.fillRect(start * nubmerOfbars, canvasRef.current.height - randomnessRef.current, bar_width, -songData[i] );
       
     }
   };
 
   return (
-    <div className="App flex">
-      <div className="w-[800px] bg-red-700 flex flex-col">
-      <div className="border border-black w-full order-last mx-auto flex-col h-[100px]">
+    <div className="App flex flex-col md:flex-row bg-gray-50 md:h-[590px] h-[990px] ">
+      <div className="max-w-[640px] mx-auto  flex flex-col pt-4">
+      <div className="w-full order-last mx-auto h-[100px]">
       <input
         type="file"
         onChange={({ target: { files } }) => files[0] && setFile(files[0])}
@@ -141,25 +137,27 @@ export default function Bars() {
       </div>       
    
 
-      <canvas ref={canvasRef} width={790} height={420}  className="bg-white mx-auto border border-red-700"/>
+      <canvas ref={canvasRef}   className="max-w-[98%] h-[300px] md:h-[400px] bg-white border border-black mx-auto"/>
       </div>  
 
       
-<div>
+    <div className="max-w-[640px] mx-auto h-[250px] flex-col pt-8">
 
-      <ColorPicker changeColor={changeColor}  changeSecondColor={changeSecondColor} changeThirdColor={changeThirdColor} ></ColorPicker>
-      <div>
+
+        <div className="pl-4 md:pl-0 ">
+          
         <EditingSlider title={"Bar Width"} min={1} max={250} OnChangeEventTriggerd={OnChangeEventTriggerd}></EditingSlider>
         <NumSlider title={"Number of bars"} min={0.3} max={10} ChangeNumBaras={ChangeNumBaras}></NumSlider>
-        <ShapeSlider title={"Height of bars"} min={-100} max={400} changeShape={changeShape}></ShapeSlider>
-        <HeightSlider title={"Height of bars 2"} min={-100} max={400} heightChange={heightChange}></HeightSlider>
+        <ShapeSlider title={"Height of bars"} min={-450} max={200} changeShape={changeShape}></ShapeSlider>
+        <HeightSlider title={"Height of bars 2"} min={-400} max={200} heightChange={heightChange}></HeightSlider>
      
-      </div>
+        </div>
+        <div className="mt-10 md:mt-4">
+         <ColorPicker changeColor={changeColor}  changeSecondColor={changeSecondColor} changeThirdColor={changeThirdColor} ></ColorPicker>
+        </div>
        
-</div>
+  </div>
      
-      
-
     </div>
   );
 }

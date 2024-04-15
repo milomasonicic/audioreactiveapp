@@ -7,10 +7,11 @@ import 'rc-slider/assets/index.css';
 export default function ShapeSlider ({title, min , max , changeShape }) {
 
     const value = useState(14)
-
+    console.log(value)
     return (
         <div>
             <h1>{title}</h1>
+           
             <div className="w-[250px]">
             <Slider
             defaultValue={value}
