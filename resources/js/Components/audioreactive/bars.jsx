@@ -9,22 +9,21 @@ import ColorPicker from '../sliders/colorpicker'
 import ShapeSlider from '../sliders/changeShape'
 import HeightSlider from '../sliders/heightSlider'
 
-
-let animationController;
+let animationController
 
 export default function Bars() {
   const [file, setFile] = useState(null);
   const audioRef = useRef();
-  const [msg, setMsg] = useState("Poruka za promjeniti");
   const canvasRef = useRef();
   const source = useRef();
   const analyzer = useRef();
 
   //ref
-  const sliderValueRef = useRef(23)
-  const nubmerOfbarsRef = useRef(1)
-  const randomnessRef = useRef(1)
-  const heightRef = useRef(80)
+  const sliderValueRef = useRef(13)
+  const nubmerOfbarsRef = useRef(1.1)
+  const randomnessRef = useRef(-60)
+  const heightRef = useRef(-240)
+
   
   //const sliderValue = useState(23)
 
@@ -38,7 +37,6 @@ export default function Bars() {
 
   function changeColor(color) {
     coloroneRef.current = color;
-    console.log(sliderValueRef.current)
   }
   
   function changeSecondColor(color) {
@@ -52,28 +50,25 @@ export default function Bars() {
   //slider
 
   const OnChangeEventTriggerd = (newValue) => {
-    
-    console.log("new Value", newValue);
     sliderValueRef.current = newValue;
-    console.log(sliderValueRef.current)
   };
 
   //slider
 
   const ChangeNumBaras = (newValue) => {
-    
-    console.log("new Value", newValue);
     nubmerOfbarsRef.current = newValue;
-    console.log(nubmerOfbarsRef.current)
+
   };
 
   function changeShape(newValue) {
+    console.log("shape", newValue)
     randomnessRef.current = newValue;
     
   }
 
   function heightChange(newValue) {
-    heightRef.current = newValue;   
+    heightRef.current = newValue; 
+    console.log("h", newValue)  
   }
 
   //slider
@@ -106,13 +101,13 @@ export default function Bars() {
       start = i * 50 ;
   
       ctx.fillStyle = coloroneRef.current;
-      ctx.fillRect(start  * nubmerOfbars, canvasRef.current.height - heightRef.current - randomnessRef.current, bar_width, 30 + (-songData[i] - 150) * 0.9);
+      ctx.fillRect(start  * nubmerOfbars, canvasRef.current.height - heightRef.current  - randomnessRef.current, bar_width, 30 + (-songData[i] - 250) * 0.9);
       
       ctx.fillStyle = colortwoRef.current;
-      ctx.fillRect(start * nubmerOfbars , canvasRef.current.height - heightRef.current - randomnessRef.current, bar_width , 200 + (-songData[i] - 150) *  0.5 );
+      ctx.fillRect(start * nubmerOfbars , canvasRef.current.height - heightRef.current - randomnessRef.current, bar_width , 20 + (-songData[i] - 150) *  0.5 );
   
       ctx.fillStyle = colorthreeRef.current;
-      ctx.fillRect(start * nubmerOfbars, canvasRef.current.height - randomnessRef.current, bar_width, -songData[i] );
+      ctx.fillRect(start * nubmerOfbars, canvasRef.current.height - randomnessRef.current, bar_width, 10 + (-songData[i] - 50) *  0.6 );
       
     }
   };
@@ -146,9 +141,9 @@ export default function Bars() {
 
         <div className="pl-4 md:pl-0 ">
           
-        <EditingSlider title={"Bar Width"} min={1} max={250} OnChangeEventTriggerd={OnChangeEventTriggerd}></EditingSlider>
-        <NumSlider title={"Number of bars"} min={0.3} max={10} ChangeNumBaras={ChangeNumBaras}></NumSlider>
-        <ShapeSlider title={"Height of bars"} min={-450} max={200} changeShape={changeShape}></ShapeSlider>
+        <EditingSlider title={"Bar Width"} min={1} max={45} OnChangeEventTriggerd={OnChangeEventTriggerd}></EditingSlider>
+        <NumSlider title={"Number of bars"} min={0.1} max={6} ChangeNumBaras={ChangeNumBaras}></NumSlider>
+        <ShapeSlider title={"Height of bars"} min={-400} max={400} changeShape={changeShape}></ShapeSlider>
         <HeightSlider title={"Height of bars 2"} min={-400} max={200} heightChange={heightChange}></HeightSlider>
      
         </div>
