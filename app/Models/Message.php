@@ -17,6 +17,5 @@ class Message extends Model
         'content',
         'deleted',
         'status'
-
     ];
 }
