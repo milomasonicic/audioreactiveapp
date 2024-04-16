@@ -17,8 +17,8 @@ export default function AudioAnalyzer3(params) {
 
       audioMotionRef.current = new AudioMotionAnalyzer( container, {
         source: audioEl,
-        height: window.innerHeight/1.5,
-        width: window.innerWidth,
+        height: 350,
+        width: containerRef.current.width,
         fsElement: container,
         mode: 10,
         radial: 1,
@@ -39,9 +39,10 @@ export default function AudioAnalyzer3(params) {
     };
    
   return (
-      <div className="App" >
-         Pokusaj
+      <div className="App m-4" >
+         
          <input
+         className="w-[70%]"
       type="file"
       onChange={({ target: { files } }) => files[0] && setFile(files[0])}
     />
@@ -53,7 +54,9 @@ export default function AudioAnalyzer3(params) {
         controls
       />
     )}
-    <div ref={containerRef} width={500} height={200} />
+     <div className="mt-5">
+      <div ref={containerRef} />
+     </div>
 
   </div>
   );

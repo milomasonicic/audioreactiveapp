@@ -18,7 +18,7 @@ export default function AudioAnalyzer(params) {
 
       audioMotionRef.current = new AudioMotionAnalyzer( container, {
           source: audioEl,
-          height: 290 ,
+          height: 290,
           mode: 6,
           barSpace: 0.1,
           ledBars: true,
@@ -30,7 +30,7 @@ export default function AudioAnalyzer(params) {
   return (
       <div className="App m-4" >
 
-    <div className="border border-white ">
+    <div className="border border-white w-[100%] ">
       <input
         type="file"
         onChange={({ target: { files } }) => files[0] && setFile(files[0])}

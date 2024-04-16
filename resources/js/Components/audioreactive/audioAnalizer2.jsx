@@ -11,14 +11,15 @@ export default function AudioAnalyzer2(params) {
   const handleAudioPlay = () => {
       
       const container = containerRef.current;
-
+      
       // audio source
       const audioEl = audioRef.current;
 
       audioMotionRef.current = new AudioMotionAnalyzer( container, {
         source: audioEl,
-        height: window.innerHeight/1.5,
-        width: window.innerWidth,
+      
+        height: 350,
+        width: containerRef.current.width,
         fsElement: container,
         mode: 10,
         gradient: 'classic',
@@ -36,9 +37,10 @@ export default function AudioAnalyzer2(params) {
     };
    
   return (
-      <div className="App" >
-         Pokusaj
+      <div className="App m-4" >
+    
          <input
+         className="w-[70%]"
       type="file"
       onChange={({ target: { files } }) => files[0] && setFile(files[0])}
     />
@@ -50,7 +52,9 @@ export default function AudioAnalyzer2(params) {
         controls
       />
     )}
-    <div ref={containerRef} width={500} height={200} />
+    <div className="mt-5">
+      <div ref={containerRef} />
+    </div>
 
   </div>
   );
