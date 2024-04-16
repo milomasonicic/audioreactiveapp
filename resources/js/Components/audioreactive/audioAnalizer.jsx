@@ -11,45 +11,52 @@ export default function AudioAnalyzer(params) {
       
     const container = containerRef.current;
     
-  
-      // audio source
-    
-      const audioEl = audioRef.current;
+    // audio source
+    const audioEl = audioRef.current;
 
-      audioMotionRef.current = new AudioMotionAnalyzer( container, {
-          source: audioEl,
-          height: 290,
-          mode: 6,
-          barSpace: 0.1,
-          ledBars: true,
-      }
-      )  
+    audioMotionRef.current = new AudioMotionAnalyzer( container, {
+      source: audioEl,
+      height: 350,
+      width: containerRef.current.width,
+      fsElement: container,
+      mode: 6,
+      radial: 1,
+      radialInvert: 0,
+      gradient: 'rainbow',
+      lineWidth: 4.5,
+      fillAlpha: .9, 
+      barSpace: 1.5,
+      showPeaks: true,
+      outlineBars: true,
+      peakLine: true,
+      radius: 0.9,
+      reflexAlpha: 0.99,
       
-    };
+    }
+    )  
+  }
    
   return (
-      <div className="App m-4" >
-
-    <div className="border border-white w-[100%] ">
-      <input
-        type="file"
-        onChange={({ target: { files } }) => files[0] && setFile(files[0])}
-      />
-      {file && (
-        <audio
-          ref={audioRef}
-          onPlay={handleAudioPlay}
-          src={window.URL.createObjectURL(file)}
-          controls
-        />
-      )}
+    <div className="App m-4" >
     
-    </div>     
-    <div className="overflow-hidden w-[80%] sm:w-[480px] md:w-[550px] lg:w-[800px]  m-4  mx-auto">
-      <div  ref={containerRef} />
+    <input
+        className="w-[70%]"
+    type="file"
+    onChange={({ target: { files } }) => files[0] && setFile(files[0])}
+    />
+    {file && (
+    <audio
+      ref={audioRef}
+      onPlay={handleAudioPlay}
+      src={window.URL.createObjectURL(file)}
+      controls
+    />
+    )}
+    <div className="mt-5">
+    <div ref={containerRef} />
     </div>
 
-  </div>
+</div>
   );
   
 };

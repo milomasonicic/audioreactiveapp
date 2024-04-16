@@ -17,19 +17,21 @@ export default function AudioAnalyzer2(params) {
 
       audioMotionRef.current = new AudioMotionAnalyzer( container, {
         source: audioEl,
-      
         height: 350,
         width: containerRef.current.width,
         fsElement: container,
-        mode: 10,
+        mode: 2,
+        radial: 1,
+        radialInvert: -2,
         gradient: 'classic',
-        lineWidth: 1.5,
-        fillAlpha: .1,
+        lineWidth: 9.5,
+        fillAlpha: .9, 
+        barSpace: 1.5,
         showPeaks: true,
         outlineBars: true,
         peakLine: true,
         radius: 0.9,
-        reflexAlpha: 0.55,
+        reflexAlpha: 0.2,
         
       }
       )  

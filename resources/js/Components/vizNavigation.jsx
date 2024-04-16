@@ -5,7 +5,7 @@ export default function VizNavigation()
 
     return (
         <div>
-            <ul className="flex  ">
+            <ul className="flex ml-4  ">
                     <li>
                         <NavLink href={route('audioanalizer')} active={route().current('audioanalizer')} className="font-mono text-2x text-stone-400">
                             Vizualizer 1
