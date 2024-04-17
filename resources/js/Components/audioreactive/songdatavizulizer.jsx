@@ -32,7 +32,7 @@ export default function Bars() {
   const colortwoRef = useRef("#a9c2cc")
   const colorthreeRef = useRef("#070c01")
  
-
+  
   //change of color
 
   function changeColor(color) {
@@ -106,11 +106,13 @@ export default function Bars() {
         canvasRef.current.width,
         canvasRef.current.height
       );
-      gradient.addColorStop(0.2, "#2392f5");
-      gradient.addColorStop(0.5, "#fe0095");
-      gradient.addColorStop(1.0, "purple");
+      gradient.addColorStop(0.2, coloroneRef.current);
+      gradient.addColorStop(0.5, colortwoRef.current);
+      gradient.addColorStop(1.0,  colorthreeRef.current);
+
+      
       ctx.fillStyle = gradient;
-      ctx.fillRect(start, canvasRef.current.height, bar_width, -songData[i]);
+      ctx.fillRect(start * nubmerOfbars, canvasRef.current.height - randomnessRef.current, bar_width, -songData[i]);
       
     }
   };
@@ -120,6 +122,7 @@ export default function Bars() {
       <div className="max-w-[640px] mx-auto  flex flex-col pt-4">
       <div className="w-full order-last mx-auto h-[100px]">
       <input
+      className="w-[70%]"
         type="file"
         onChange={({ target: { files } }) => files[0] && setFile(files[0])}
       />
@@ -132,22 +135,21 @@ export default function Bars() {
         />
       )}
 
+      
       </div>       
    
-
-      <canvas ref={canvasRef}   className="max-w-[98%] h-[300px] md:h-[400px] bg-white border border-black mx-auto"/>
+      <canvas ref={canvasRef} id="canvasBar" className="max-w-[98%] h-[300px] md:h-[400px] bg-white border border-black mx-auto"/>
       </div>  
 
       
     <div className="max-w-[640px] mx-auto h-[250px] flex-col pt-8">
 
 
-        <div className="pl-4 md:pl-0 ">
+        <div id="bars" className="pl-4 md:pl-0 ">
           
         <EditingSlider title={"Bar Width"} min={1} max={45} OnChangeEventTriggerd={OnChangeEventTriggerd}></EditingSlider>
         <NumSlider title={"Number of bars"} min={0.1} max={6} ChangeNumBaras={ChangeNumBaras}></NumSlider>
         <ShapeSlider title={"Height of bars"} min={-400} max={400} changeShape={changeShape}></ShapeSlider>
-        <HeightSlider title={"Height of bars 2"} min={-400} max={200} heightChange={heightChange}></HeightSlider>
      
         </div>
         <div className="mt-10 md:mt-4">
