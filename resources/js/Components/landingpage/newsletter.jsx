@@ -1,30 +1,28 @@
 import {useState} from  "react"
 import { router } from '@inertiajs/react'
+import { usePage} from '@inertiajs/react'
+import { useForm } from '@inertiajs/react'
+
 
 
 export default function Newsletter(){
-
-
-    const [values, setValues] = useState({
-        email: "",
-      })
-
+      
+  const { data, setData, post} = useForm({
+    email: ' ',
+  
+  })
+  
+  const { errors } = usePage().props
 
     
   function handleChange(e) {
-    const key = e.target.id;
-    const value = e.target.value
-    setValues(values => ({
-        ...values,
-        [key]: value,
-    }))
-
- 
+    const {id, value} = e.target
+    setData(id, value)
   }  
 
   function handleSubmit(e) {
     e.preventDefault()
-    router.post('/subscriberstore', values)
+   post('/subscriberstore', data)
   }
 
     return (
@@ -35,11 +33,20 @@ export default function Newsletter(){
                     <h4 className="font-caveat text-2xl"> We will not bother you much.</h4>
                     <form className="" onSubmit={handleSubmit}>
                   
-                     <input id="email" className="w-[370px| md:w-[450px] "  value={values.email} onChange={handleChange} />
-                    
+                     <input id="email" className="w-[370px| md:w-[450px] "  value={data.email} onChange={handleChange} />
+                 
+
+
                         <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ml-[3px]">Subscribe</button>
                      
                     </form>
+                    <div>
+                    {errors.email && (
+                    <div id="danger">
+                      {errors.email}
+                    </div>
+                    )}
+                    </div>
 
                 </div>
             </div>
@@ -47,4 +54,4 @@ export default function Newsletter(){
         </div>
       
     )
-}
+}  

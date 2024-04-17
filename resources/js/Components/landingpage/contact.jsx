@@ -1,6 +1,7 @@
 import React from "react"
 import {useState} from  "react"
 import { router } from '@inertiajs/react'
+import { usePage } from '@inertiajs/react'
 
 export default function ContactForm(){
 
@@ -10,6 +11,8 @@ export default function ContactForm(){
         content: " "
       })
 
+      
+  const { errors } = usePage().props  
 
     
   function handleChange(e) {
@@ -35,6 +38,15 @@ export default function ContactForm(){
                 <div>
                     <h1 className="text-4xl font-mono font-bold text-stone-100 font-caveat mb-2 ml-4 md:ml-0"> contAct us</h1>
                     <p className="text-stone-100 mb-4 ml-4 md:ml-0"> Get in touch. Share your ideas.</p>
+                    
+                    <div>
+                    {errors.email && (
+                    <div id="danger">
+                      {errors.name}  {errors.email}  {errors.content}
+                    </div>
+                    )}
+                    </div>
+                    
                     <form className="md:w-[600px] w-[90%] ml-4 md:ml-0"  onSubmit={handleSubmit}>
                     <div className="md:inline">
                       <label htmlFor="name" className="text-stone-100">Name:</label>
@@ -51,6 +63,7 @@ export default function ContactForm(){
                     
                     
                     </form>
+                   
 
                 </div>
 

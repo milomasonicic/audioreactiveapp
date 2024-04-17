@@ -23,14 +23,18 @@ class SubscriberController extends Controller
 
     public function store(Request $request) {
 
+        $validated = $request->validate([
+            'email' => 'required|email|unique:subscribers,email'
+        ], [
+            'email.unique' => 'You are already subscribed'
+        ]);
+
         $sub = Subscriber::create([
             'email'=> $request->email
         ]);
 
         $id = $sub->id;
         Mail::to($request->email)->send(new Subscribed($id));
-
-        return to_route('subscribers.index');
     }
 
     public function delete($id) {

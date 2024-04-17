@@ -22,6 +22,20 @@ class MessageController extends Controller
     //
 
     public function store(Request $request) {
+
+      $validated = $request->validate([
+        'email' => 'required|email|unique:subscribers,email',
+        'name' => 'required|string',
+        'content' => 'required|string|max:600',
+        ], [
+        'email.unique' => 'You are already subscribed',
+        'name.string' => 'Name must be string',
+        'content.max' => 'The content may not be longer than 600 charachters',
+
+         ]);
+
+
+
        Message::create([
         'name' => $request->name,
         'email' => $request->email,
