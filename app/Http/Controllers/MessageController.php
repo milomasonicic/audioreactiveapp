@@ -23,12 +23,13 @@ class MessageController extends Controller
 
     public function store(Request $request) {
 
+      //dd($request);
       $validated = $request->validate([
-        'email' => 'required|email|unique:subscribers,email',
+        'email' => 'required|email',
         'name' => 'required|string',
         'content' => 'required|string|max:600',
         ], [
-        'email.unique' => 'You are already subscribed',
+        'email' => 'Must be mail',
         'name.string' => 'Name must be string',
         'content.max' => 'The content may not be longer than 600 charachters',
 
@@ -68,7 +69,7 @@ class MessageController extends Controller
 
   }
 
-  public function updateStatusToTrue(Request $request, $id) {
+ /* public function updateStatusToTrue(Request $request, $id) {
 
     $message = Message::findOrfail($id);
 
@@ -76,7 +77,7 @@ class MessageController extends Controller
     $message->save();   
     
     return response()->noContent();
-  }
+  }*/
    
 }
 

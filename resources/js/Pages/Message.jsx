@@ -1,11 +1,8 @@
-
 import { Head } from '@inertiajs/react'
 import {useState} from  "react"
 import { router } from '@inertiajs/react'
-
-
-
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import { useRef } from 'react';
 
 export default function Welcome({ messages, auth }) {
 
@@ -13,46 +10,29 @@ export default function Welcome({ messages, auth }) {
     id: " ",
   })
 
+  const status = useRef("Unread")
+ 
+
   function changePage(id){
     router.get(`mcontnent/${id}`)
   }
 
-  function changeStatus(id){
-    router.post(`mupdate/${id}`)
+    
+  const setStatustoOne = () => {
+    status.current = "Read"
   }
 
-  //two function onclick
+
  function handleButtonClick(id) {
      changePage(id)
-
-     setTimeout(() => {
-       changeStatus(id)
-     }, 500)
-    
+     setStatustoOne()
     
   }
-
- 
 
   function handleDeleteClick(id)  {
     router.delete(`mdelete/${id}`)
   } 
   
-    function handleChange(e) {
-    const key = e.target.id;
-    const value = e.target.value
-    setValues(values => ({
-        ...values,
-        [key]: value,
-    }))
-
-
-    }  
-
-    function handleSubmit(e) {
-      e.preventDefault()
-      router.post('/mdelete', values)
-    }
 
 
   return (
@@ -84,7 +64,7 @@ export default function Welcome({ messages, auth }) {
 
                 <th scope="col" class="px-6 py-3">
                     Status
-                    SREDITI RUTU ZA STATUS
+                   
                 </th>
                
             </tr>
@@ -114,7 +94,7 @@ export default function Welcome({ messages, auth }) {
             </td>
 
             <td>
-              Unread
+              {message.status} 
             </td>
             
         </tr>
@@ -128,15 +108,6 @@ export default function Welcome({ messages, auth }) {
 
         
         </AuthenticatedLayout> 
-
-     
-
-
-
-    
-
-
-
 
     </div>
  
