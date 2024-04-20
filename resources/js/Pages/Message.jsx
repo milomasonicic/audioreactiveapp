@@ -1,28 +1,21 @@
-import { Head } from '@inertiajs/react'
-import {useState} from  "react"
+
 import { router } from '@inertiajs/react'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { useRef } from 'react';
+
+
 
 export default function Welcome({ messages, auth }) {
 
-  const [values, setValues] = useState({
-    id: " ",
-  })
-
-  const status = useRef("Unread")
- 
 
   function changePage(id){
     router.get(`mcontnent/${id}`)
   }
 
-    
-  const setStatustoOne = () => {
-    status.current = "Read"
+  function statuRead() {
+    status.current = 'Read'; 
   }
 
-
+  
  function handleButtonClick(id) {
      changePage(id)
      setStatustoOne()
@@ -33,8 +26,6 @@ export default function Welcome({ messages, auth }) {
     router.delete(`mdelete/${id}`)
   } 
   
-
-
   return (
     
     <div>
@@ -64,8 +55,9 @@ export default function Welcome({ messages, auth }) {
 
                 <th scope="col" class="px-6 py-3">
                     Status
-                   
                 </th>
+
+               
                
             </tr>
         </thead>
@@ -73,7 +65,7 @@ export default function Welcome({ messages, auth }) {
 
         {messages.map((message, index) => (
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={index}>
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <th scope="row" class=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
              {message.name}
             </th>
             <td class="px-6 py-4">
@@ -83,7 +75,8 @@ export default function Welcome({ messages, auth }) {
             
             
             <button 
-            onClick={() => handleButtonClick(message.id) }
+            onClick={() => {handleButtonClick(message.id); statuRead()}}
+           
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"> See the messages</button>
            
             </td>
@@ -94,9 +87,13 @@ export default function Welcome({ messages, auth }) {
             </td>
 
             <td>
-              {message.status} 
+               
+                     {message.status === 1 ? 
+                      <span className='font-extrabold text-green-400'> Read </span> : <span className='font-extrabold text-red-400'> New</span>
+                       }
+
+                
             </td>
-            
         </tr>
       ))}
 

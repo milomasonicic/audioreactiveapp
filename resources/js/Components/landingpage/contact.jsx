@@ -1,34 +1,31 @@
-import React from "react"
-import {useState} from  "react"
-import { router } from '@inertiajs/react'
-import { usePage } from '@inertiajs/react'
+import { usePage} from '@inertiajs/react'
+import { useForm } from '@inertiajs/react'
 
 export default function ContactForm(){
 
-    const [values, setValues] = useState({
+
+      const { data, setData, reset, post} = useForm({
         name: " ",
         email: "",
         content: " "
-      })
+      
+      })    
 
       
   const { errors } = usePage().props  
 
     
-  function handleChange(e) {
-    const key = e.target.id;
-    const value = e.target.value
-    setValues(values => ({
-        ...values,
-        [key]: value,
-    }))
-
  
-  }  
 
   function handleSubmit(e) {
     e.preventDefault()
-    router.post('/mstore', values)
+   post('/mstore', {
+    preserveScroll:true,
+    onSuccess: () => reset('email', 'name', 'content'),
+      
+   },data)
+
+   
   }
 
     return (
@@ -50,15 +47,15 @@ export default function ContactForm(){
                     <form className="md:w-[600px] w-[90%] ml-4 md:ml-0"  onSubmit={handleSubmit}>
                     <div className="md:inline">
                       <label htmlFor="name" className="text-stone-100">Name:</label>
-                       <input className="mb-2 md:w-[220px] w-[90%]" id="name" value={values.name} onChange={handleChange} />
+                       <input className="mb-2 md:w-[220px] w-[90%]" id="name" value={data.name} onChange={(e)=>setData('name', e.target.value)} />
                     </div>
                     <div className="md:inline">
                      <label htmlFor="email" className="text-stone-100 md:ml-4" >Email:</label>
-                     <input id="email" className="mb-2 md:w-[220px] w-[90%]" value={values.email} onChange={handleChange} />
+                     <input id="email" className="mb-2 md:w-[220px] w-[90%]" value={data.email} onChange={(e)=>setData('email', e.target.value)} />
                     </div>  
-                     <textarea id="content" className="w-[90%] md:w-[550px] mb-2" value={values.content} onChange={handleChange}  name="content" cols="30" rows="10"></textarea>
+                     <textarea id="content" className="w-[90%] md:w-[550px] mb-2" value={data.content} onChange={(e)=>setData('content', e.target.value)}   name="content" cols="30" rows="10"></textarea>
                     
-                     <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ml-[3px]">Send</button>
+                     <button type="submit"  class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ml-[3px]">Send</button>
                   
                     </form>
                    
@@ -73,5 +70,3 @@ export default function ContactForm(){
     )
 }
 
-/*  <!--textarea className="w-[550px]" name="" id="" cols="30" rows="10"></textarea--> */
-/*<button type="button" onClick={()=>changeColor(color)}   class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">SEND</button>*/

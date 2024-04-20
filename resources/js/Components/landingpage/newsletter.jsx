@@ -1,5 +1,3 @@
-import {useState} from  "react"
-import { router } from '@inertiajs/react'
 import { usePage} from '@inertiajs/react'
 import { useForm } from '@inertiajs/react'
 
@@ -7,22 +5,22 @@ import { useForm } from '@inertiajs/react'
 
 export default function Newsletter(){
       
-  const { data, setData, post} = useForm({
+  const { data, setData, processing, post} = useForm({
     email: ' ',
   
   })
   
   const { errors } = usePage().props
 
-    
-  function handleChange(e) {
-    const {id, value} = e.target
-    setData(id, value)
-  }  
 
   function handleSubmit(e) {
     e.preventDefault()
-   post('/subscriberstore', data)
+    post('/subscriberstore', {
+      preserveScroll:true,
+      onSuccess: () => setData('email', ' '),
+   }, data)
+
+  
   }
 
     return (
@@ -33,7 +31,7 @@ export default function Newsletter(){
                     <h4 className="font-caveat text-2xl"> We will not bother you much.</h4>
                     <form className="" onSubmit={handleSubmit}>
                   
-                     <input id="email" className="w-[370px| md:w-[450px] "  value={data.email} onChange={handleChange} />
+                     <input id="email" className="w-[370px| md:w-[450px] "  value={data.email} onChange={(e)=>setData('email', e.target.value)} />
                  
 
 
