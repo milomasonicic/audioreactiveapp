@@ -1,10 +1,17 @@
 import NavLink from "../NavLink"
 import { motion, useAnimation } from "framer-motion";
-import ImageBox from "../ImageBox";
+
 import Box1 from "../Box1"
 
 
 export default function DarkSection (){
+
+    const icons = {
+        icon1: "images/darkAud (1).png",
+        icon2: "images/darkAud (2).png",
+        icon3: "images/darkAud (3).png",
+    }
+
 
     const variant = {
         visible: {scale: 0.9},
@@ -46,9 +53,9 @@ export default function DarkSection (){
 
                         <NavLink href={route('audioanalizer')} active={route().current('audioanalizer')}>
                             <div>
-                               <Box1></Box1>
-                               <h1 className="text-center">
-                                audioanalizer 
+                               <Box1 iconUpper={icons.icon1}></Box1>
+                               <h1 className="text-center text-xl text-stone-100">
+                                Audioanalizer 1
                                </h1>
                             </div>
                         </NavLink>
@@ -58,9 +65,9 @@ export default function DarkSection (){
                     <li>
                         <NavLink href={route('audioanalizer2')} active={route().current('audioanalizer2')}>
                             <div>
-                                <Box1></Box1>
-                                <h1 className="text-center">
-                                    audioanalizer 2
+                                <Box1 iconUpper={icons.icon2}></Box1>
+                                <h1 className="text-center text-xl text-stone-100">
+                                    Audioanalizer 2
                                 </h1>
                             </div>
                         </NavLink>
@@ -71,9 +78,9 @@ export default function DarkSection (){
 
                         <NavLink href={route('audioanalizer3')} active={route().current('audioanalizer3')}>
                             <div>
-                            <Box1></Box1>
-                              <h1 className="text-center">
-                                audioanalizer 3
+                            <Box1 iconUpper={icons.icon3}></Box1>
+                              <h1 className="text-center text-xl text-stone-100">
+                              Audioanalizer 3
                               </h1>
                             </div>
                         </NavLink>

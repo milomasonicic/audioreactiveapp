@@ -7,14 +7,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 export default function Welcome({ messages, auth }) {
 
 
+
   function changePage(id){
     router.get(`mcontnent/${id}`)
   }
-
-  function statuRead() {
-    status.current = 'Read'; 
-  }
-
   
  function handleButtonClick(id) {
      changePage(id)

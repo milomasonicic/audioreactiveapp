@@ -7,17 +7,15 @@ import { motion } from "framer-motion";
 export default function LightSection (){
 
     const icons = {
-        icon1: "images/bgBars.png",
-        icon2: "images/soudnW.gif",
-        //icon2: "images/icons8-wave-96.png",
-        icon3: "images/audio-waves.png",
+        icon1: "images/soundBars.png",
+        icon2: "images/snd.png",
     }
 
     
   const variant = {
         
-        visible: {scale: 1, transition:{duration: 2} },
-    hidden: {scale: 0.8},
+        visible: {scale: 0.9, transition:{duration: 1.2} },
+    hidden: {scale: 0.6},
   }
 
   
@@ -41,9 +39,9 @@ export default function LightSection (){
                         <li className="">
                             <NavLink href={route('colorfulbars')} active={route().current('colorfulbars')}>
                             <div>
-                                <Box1 icon={icons.icon3} iconUpper={icons.icon1}></Box1>
-                                <h1 className="text-center">
-                                    colorful bArs
+                                <Box1 iconUpper={icons.icon1}></Box1>
+                                <h1 className="text-center font-mono font-bold text-center text-xl">
+                                    colorful bArs 1
                                 </h1>
                             </div>
                             </NavLink>
@@ -53,9 +51,9 @@ export default function LightSection (){
                         <li className="">
                             <NavLink href={route('numbers')} active={route().current('numbers')}>
                             <div>
-                            <Box1 icon={icons.icon2} iconUpper={icons.icon1}></Box1>
-                            <h1 className="text-center">
-                                number bArs
+                            <Box1  iconUpper={icons.icon2}></Box1>
+                            <h1 className="text-center text-center font-bold text-xl font-mono">
+                                number bArs 2
                             </h1>
 
                             </div>
