@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import GuestLayout from '@/Layouts/GuestLayout';
+import Authenticated from '@/Layouts/AuthenticatedLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Register() {
+export default function Register({auth}) {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
@@ -27,8 +27,12 @@ export default function Register() {
     };
 
     return (
-        <GuestLayout>
+        <Authenticated
+        user={auth.user}
+        header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Create New Users </h2>}
+        >
             <Head title="Register" />
+        <div className='max-w-[400px] mx-auto'>
 
             <form onSubmit={submit}>
                 <div>
@@ -100,18 +104,14 @@ export default function Register() {
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    <Link
-                        href={route('login')}
-                        className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                    >
-                        Already registered?
-                    </Link>
+                    
 
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Register
                     </PrimaryButton>
                 </div>
             </form>
-        </GuestLayout>
+        </div>  
+        </Authenticated>
     );
 }

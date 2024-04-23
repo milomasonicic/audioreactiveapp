@@ -16,11 +16,9 @@ export default function Authenticated({ user, header, children }) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
-                            <div className="shrink-0 flex items-center">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                                </Link>
-                            </div>
+                        <NavLink href={route('dashboard')} active={route().current('dashboard')} className="text-3xl font-wave">
+                            HomeAudioVizulizerHomeAudioVizulizerHome
+                        </NavLink>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink href={route('mmessages')} active={route().current('mmessages')}>
@@ -29,6 +27,10 @@ export default function Authenticated({ user, header, children }) {
 
                                 <NavLink href={route('subscribers.index')} active={route().current('subscribers.index')}>
                                     Subscribers
+                                </NavLink>
+
+                                <NavLink href={route('registered.users')} active={route().current('registered.users')}>
+                                    Users
                                 </NavLink>
                             </div>
                         </div>
@@ -62,6 +64,7 @@ export default function Authenticated({ user, header, children }) {
 
                                     <Dropdown.Content>
                                         <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
+                                        <Dropdown.Link href={route('register')}>Make New User</Dropdown.Link>
                                         <Dropdown.Link href={route('logout')} method="post" as="button">
                                             Log Out
                                         </Dropdown.Link>
@@ -101,7 +104,21 @@ export default function Authenticated({ user, header, children }) {
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
                         </ResponsiveNavLink>
+
+                        <ResponsiveNavLink href={route('mmessages')} active={route().current('mmessages')}>
+                                    Messages
+
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink  href={route('subscribers.index')} active={route().current('subscribers.index')}>
+                                    Subscribers
+
+                        </ResponsiveNavLink>
+
+
                     </div>
+
+               
 
                     <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                         <div className="px-4">

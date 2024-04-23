@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,17 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
+
+    
+    Route::get('register', [RegisteredUserController::class, 'create'])
+                ->name('register');
+
+    Route::post('register', [RegisteredUserController::class, 'store']);
+
+    Route::get('users', [ProfileController::class, 'ind'])->name('registered.users');
+    Route::delete('udelete/{id}', [ProfileController::class, 'delete'])->name('registered.delete');
+
+    
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -88,22 +100,9 @@ Route::get('/audioanalizer3', function () {
     return Inertia::render('Audioanalizer3');
 })->name('audioanalizer3');
 
-Route::get('/numbers', function () {
+Route::get('/gradient', function () {
     return Inertia::render('Numbers');
-})->name('numbers');
+})->name('gradient');
 
-
-/*Route::get('/admin', function () {
-    return Inertia::render('Admin');
-})->name('admin');*/
-
-/*Route::get('/messages', function () {
-    return Inertia::render('Admin');
-})->name('messages');*/
-
-
-
-
-//->middleware(['auth', 'verified'])
 
 require __DIR__.'/auth.php';

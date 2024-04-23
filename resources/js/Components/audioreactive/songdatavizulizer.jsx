@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-
+import LightViz from "../LightvizNav";
 import EditingSlider from '../sliders/slider'
 import NumSlider from '../sliders/numBarsslider'
 import ColorPicker from '../sliders/colorpicker'
@@ -137,7 +137,7 @@ export default function Bars() {
 
       
       </div>       
-   
+      <LightViz></LightViz>
       <canvas ref={canvasRef} id="canvasBar" className="max-w-[98%] h-[300px] md:h-[400px] bg-white border border-black mx-auto"/>
       </div>  
 

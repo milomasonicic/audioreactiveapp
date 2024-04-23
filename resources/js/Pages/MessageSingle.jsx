@@ -4,7 +4,7 @@ import { format } from  'date-fns';
 
 export default function Single({message, auth}) {
     const formattedDate = format(new Date (message.created_at), 'dd/MM/yyyy HH:mm:ss');
-
+    
 
     return (
         <div>

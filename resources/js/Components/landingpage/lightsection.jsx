@@ -8,7 +8,7 @@ export default function LightSection (){
 
     const icons = {
         icon1: "images/soundBars.png",
-        icon2: "images/snd.png",
+        icon2: "images/soundBars.png",
     }
 
     
@@ -40,8 +40,8 @@ export default function LightSection (){
                             <NavLink href={route('colorfulbars')} active={route().current('colorfulbars')}>
                             <div>
                                 <Box1 iconUpper={icons.icon1}></Box1>
-                                <h1 className="text-center font-mono font-bold text-center text-xl">
-                                    colorful bArs 1
+                                <h1 className="text-center font-bold text-center">
+                                  Audioreactive 1
                                 </h1>
                             </div>
                             </NavLink>
@@ -49,11 +49,11 @@ export default function LightSection (){
                         </li>
 
                         <li className="">
-                            <NavLink href={route('numbers')} active={route().current('numbers')}>
+                            <NavLink href={route('gradient')} active={route().current('gradient')}>
                             <div>
                             <Box1  iconUpper={icons.icon2}></Box1>
-                            <h1 className="text-center text-center font-bold text-xl font-mono">
-                                number bArs 2
+                            <h1 className="text-center text-center font-bold">
+                                Audioreactive 2
                             </h1>
 
                             </div>
