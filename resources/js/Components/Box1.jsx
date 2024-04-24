@@ -34,7 +34,7 @@ export default function Box1({icon, iconUpper}){
         initial="hidden"
         
         >
-            <div className="transition bg-slate-50 ease-in-out delay-20 hover:scale-105  w-[320px] h-[220px] rounded-3xl ring-offset-1 ring-1 relative">
+            <div className="transition bg-slate-50 ease-in-out delay-20 hover:scale-105 w-[245px]  md:w-[320px] h-[220px] rounded-3xl ring-offset-1 ring-1 relative">
               <img src={icon} alt="" className="absolute w-[25%] top-1/3 left-1/3" />
               <img src={iconUpper} className="object-cover h-full rounded-3xl"></img>
             

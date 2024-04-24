@@ -23,7 +23,7 @@ export default function LightSection (){
     return (
 
         <div className="bg-stone-50 ">
-            <div className="min-h-[400px] max-w-[1240px] mx-auto min-h-[650px] pt-16">
+            <div className="min-h-[400px] max-w-[1240px] mx-auto min-h-[670px] pt-16">
                 
                 <Playground></Playground>
                 <motion.div 
@@ -40,7 +40,7 @@ export default function LightSection (){
                             <NavLink href={route('colorfulbars')} active={route().current('colorfulbars')}>
                             <div>
                                 <Box1 iconUpper={icons.icon1}></Box1>
-                                <h1 className="text-center font-bold text-center">
+                                <h1 className="text-center text-xl font-bold text-center">
                                   Audioreactive 1
                                 </h1>
                             </div>
@@ -52,7 +52,7 @@ export default function LightSection (){
                             <NavLink href={route('gradient')} active={route().current('gradient')}>
                             <div>
                             <Box1  iconUpper={icons.icon2}></Box1>
-                            <h1 className="text-center text-center font-bold">
+                            <h1 className="text-center text-center text-xl font-bold">
                                 Audioreactive 2
                             </h1>
 

@@ -4,7 +4,7 @@
 export default function Hero (){
 
     return (
-        <div className="md:bg-none bg-heroImage bg-no-repeat  max-w-[1240px] mx-auto flex-column pl-[8px] md:pl-[0px] md:flex md:justify-around md:items-center md:h-[620px] h-[800px]">
+        <div className="md:bg-none bg-heroImage bg-cover bg-center bg-no-repeat  max-w-[1240px] mx-auto flex-column pl-[8px] md:pl-[0px] md:flex md:justify-around md:items-center md:h-[620px] h-[800px]">
 
 
             <div className=" w-[100%] md:max-w-[40%] h-[75%]">

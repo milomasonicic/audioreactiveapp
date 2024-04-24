@@ -12,7 +12,7 @@ export default function ShapeSlider ({title, min , max , changeShape }) {
         <div>
             <h1>{title}</h1>
            
-            <div className="w-[250px]">
+            <div className="w-[225px] md:w-[250px]">
             <Slider
             defaultValue={value}
             min={min}

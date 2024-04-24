@@ -35,7 +35,7 @@ export default function DarkSection (){
               variants={variantH1}
               initial="hidden"
               whileInView="visible"
-            className='font-mono  ml-[12px] md:ml-[0px] font-bold text-4xl text-white '>
+            className='font-mono  ml-[12px] md:ml-[0px] font-bold text-2xl md:text-4xl text-white '>
                 our audio vizualizers
             </motion.h1>
             </div>

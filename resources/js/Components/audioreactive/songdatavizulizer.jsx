@@ -119,7 +119,7 @@ export default function Bars() {
 
   return (
     <div className="App flex flex-col md:flex-row bg-gray-50 md:h-[590px] h-[990px] ">
-      <div className="max-w-[640px] mx-auto  flex flex-col pt-4">
+      <div className="w-[98%] md:max-w-[640px] mx-auto  flex flex-col pt-4">
       <div className="w-full order-last mx-auto h-[100px]">
       <input
       className="w-[70%]"
@@ -138,14 +138,14 @@ export default function Bars() {
       
       </div>       
       <LightViz></LightViz>
-      <canvas ref={canvasRef} id="canvasBar" className="max-w-[98%] h-[300px] md:h-[400px] bg-white border border-black mx-auto"/>
+      <canvas ref={canvasRef} id="canvasBar" className="max-w-[98%] h-[250px] md:h-[400px] bg-white border border-black mx-auto"/>
       </div>  
 
       
     <div className="max-w-[640px] mx-auto h-[250px] flex-col pt-8">
 
 
-        <div id="bars" className="pl-4 md:pl-0 ">
+        <div id="bars" className="pl-1 md:pl-0 ">
           
         <EditingSlider title={"Bar Width"} min={1} max={45} OnChangeEventTriggerd={OnChangeEventTriggerd}></EditingSlider>
         <NumSlider title={"Number of bars"} min={0.1} max={6} ChangeNumBaras={ChangeNumBaras}></NumSlider>
