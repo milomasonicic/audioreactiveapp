@@ -15,24 +15,20 @@ export default function Users({auth, users}) {
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> List of users </h2>}
         >
-        <div className='max-w-[1040px] mx-auto'>
-        <table class=" mt-12 w-[95%] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <div className='max-w-[1240px] mx-auto'>
+        <table class=" mt-12 md:w-[80%] mx-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3">
-                    Name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    email
+                <th scope="col" class="px-2 md:px-6 md:py-3">
+                    User
                 </th>
                
-                <th scope="col" class="px-6 py-3">
+               
+                <th scope="col" class="px-2 md:px-6 md:py-3">
                     Delete
                 </th>
 
-                
-
-               
+                  
                
             </tr>
         </thead>
@@ -42,11 +38,18 @@ export default function Users({auth, users}) {
                
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={index}>
             <th scope="row" class=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-             {user.name}
+                <ul>
+                    <li>
+                        Name: {user.name}
+
+                    </li>
+
+                    <li>
+                        Email:  {user.email}
+                    </li>
+                </ul>            
             </th>
-            <td class="px-6 py-4">
-            {user.email}
-            </td>
+            
             <td>
             {user.email === 'admin@admin.com' ? 
                 <span className='font-extrabold text-black-400'> Can not Delete </span> : 

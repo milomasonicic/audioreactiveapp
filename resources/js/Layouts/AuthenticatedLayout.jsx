@@ -112,9 +112,15 @@ export default function Authenticated({ user, header, children }) {
 
                         <ResponsiveNavLink  href={route('subscribers.index')} active={route().current('subscribers.index')}>
                                     Subscribers
-
                         </ResponsiveNavLink>
 
+                        <ResponsiveNavLink  href={route('registered.users')} active={route().current('registered.users')}>
+                                    Users
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink  href={route('register')} active={route().current('register')}>
+                                    Make New User
+                        </ResponsiveNavLink>
+                      
 
                     </div>
 
