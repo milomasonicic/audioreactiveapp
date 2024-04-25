@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-
+import { useRef, useEffect,  useState } from "react";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import LightViz from '@/Components/LightvizNav';
@@ -47,6 +46,7 @@ export default function Bars() {
     colorthreeRef.current = color; 
   }
 
+
   //slider
 
   const OnChangeEventTriggerd = (newValue) => {
@@ -61,14 +61,14 @@ export default function Bars() {
   };
 
   function changeShape(newValue) {
-    console.log("shape", newValue)
+   
     randomnessRef.current = newValue;
     
   }
 
   function heightChange(newValue) {
     heightRef.current = newValue; 
-    console.log("h", newValue)  
+   
   }
 
   //slider
@@ -87,6 +87,8 @@ export default function Bars() {
   
   const visualizeData = () => {
     const ctx = canvasRef.current.getContext("2d");
+  
+    
     animationController = window.requestAnimationFrame(visualizeData);
   
     const songData = new Uint8Array(140);
@@ -96,22 +98,28 @@ export default function Bars() {
     const nubmerOfbars = nubmerOfbarsRef.current 
     let start = 0
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+
+    ctx.fillStyle = "white";
+    ctx.fillRect(0 , 0, canvasRef.current.width, canvasRef.current.height );
+
     for (let i = 0; i < songData.length; i++) {
    
       start = i * 50 ;
-  
+     
       ctx.fillStyle = coloroneRef.current;
       ctx.fillRect(start  * nubmerOfbars, canvasRef.current.height - heightRef.current  - randomnessRef.current, bar_width, 30 + (-songData[i] - 250) * 0.9);
       
       ctx.fillStyle = colortwoRef.current;
       ctx.fillRect(start * nubmerOfbars , canvasRef.current.height - heightRef.current - randomnessRef.current, bar_width , 20 + (-songData[i] - 150) *  0.5 );
   
+    
       ctx.fillStyle = colorthreeRef.current;
       ctx.fillRect(start * nubmerOfbars, canvasRef.current.height - randomnessRef.current, bar_width, 10 + (-songData[i] - 50) *  0.6 );
       
     }
   };
 
+    
   return (
     <div className="App flex flex-col md:flex-row bg-gray-50 md:h-[590px] h-[990px] ">
       <div className="w-[98%] md:max-w-[640px] mx-auto  flex flex-col pt-4">
@@ -133,7 +141,7 @@ export default function Bars() {
       </div>       
    
       <LightViz></LightViz>
-      <canvas ref={canvasRef}   className="max-w-[98%] h-[250px] md:h-[400px] bg-white border border-black md:mx-auto"/>
+      <canvas ref={canvasRef}   className="max-w-[98%] h-[250px] bg-white md:h-[400px] border border-black md:mx-auto"/>
       </div>  
 
       

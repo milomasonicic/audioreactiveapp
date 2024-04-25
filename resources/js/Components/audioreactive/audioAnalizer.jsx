@@ -8,6 +8,8 @@ export default function AudioAnalyzer(params) {
   const  audioMotionRef = useRef(null);
 
   const handleAudioPlay = () => {
+
+
       
     const container = containerRef.current;
     
@@ -35,7 +37,10 @@ export default function AudioAnalyzer(params) {
     }
     )  
   }
-   
+
+
+
+
   return (
     <div className="App m-4" >
     
