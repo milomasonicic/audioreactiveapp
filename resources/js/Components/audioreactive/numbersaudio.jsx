@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-//RED NUMBERS COMPONENT
+//note to self: Koristim ovu komponentu one gradient brojeve
 
 let animationController;
 
